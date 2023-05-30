@@ -95,7 +95,9 @@ function DetailsReporting({ match }) {
                         borderRadius: "5px",
                       }}
                     >
-                      {reportings.work_status}
+                      {reportings.work_status === "Diterima"
+                        ? "Diproses"
+                        : reportings.work_status}
                     </b>
                   </Col>
                 </Row>
