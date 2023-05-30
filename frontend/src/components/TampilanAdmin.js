@@ -424,7 +424,6 @@ export function Pengaduans() {
       .put(`/u/rep?id=${id}`, { work_status: newStatus })
       .then((response) => {
         console.log(response.data);
-        // Memperbarui status pada state
         const updatedList = reportings.map((report) => {
           if (report.complaint_id === id) {
             return { ...report, work_status: newStatus };
@@ -432,11 +431,11 @@ export function Pengaduans() {
           return report;
         });
         setReportings(updatedList);
-        Swal.fire("Okay", "reporting Diterima", "success");
+        Swal.fire("Okay", "Reporting Accepted", "success");
       })
       .catch((error) => {
         console.error(error);
-        Swal.fire("Oops", "Something went wrong", "error");
+        Swal.fire("Oops", "Something Went Wrong", "error");
       });
   };
 
