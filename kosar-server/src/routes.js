@@ -47,6 +47,7 @@ const routes = [
     method: "DELETE",
     handler: handler.deleteReporting,
   },
+  //Tambahan
   {
     path: "/u/rep/reason",
     method: "PUT",
@@ -56,6 +57,11 @@ const routes = [
     path: "/u/rep/vote",
     method: "PUT",
     handler: handler.vote,
+  },
+  {
+    path: "/l/emp",
+    method: "POST",
+    handler: handler.loginEmployee,
   },
 ];
 

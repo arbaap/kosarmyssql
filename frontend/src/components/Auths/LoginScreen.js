@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 import Card from "react-bootstrap/Card";
-import logo from "../../assets/subang.png"
+import logo from "../../assets/subang.png";
 
 function LoginScreen() {
   const [username, setUsername] = useState("");
@@ -17,21 +17,41 @@ function LoginScreen() {
     };
 
     try {
-      const response = await axios.post("/c/login", credentials);
+      const response = await axios.post("/l/emp", credentials);
       console.log(response.data);
 
       if (response.status === 200) {
-        Swal.fire("Success", "Login Successful", "success").then((result) => {
-          // Lakukan tindakan lain setelah berhasil login...
-          // Contoh: Pindah ke halaman lain atau tampilkan notifikasi lainnya
-          window.location.href = "/admin";
-        });
+        if (response.data.status === "Success" && response.data.code === 200) {
+          const isAdmin = response.data.position;
+
+          if (isAdmin === "Admin") {
+            sessionStorage.setItem(
+              "loggedInUser",
+              JSON.stringify({ username, isAdmin })
+            );
+
+            Swal.fire("Success", "Login Successful", "success").then(
+              (result) => {
+                window.location.href = "/admin";
+              }
+            );
+          } else {
+            Swal.fire(
+              "Oops",
+              "You are not an admin. You do not have permission to access this page.",
+              "warning"
+            );
+          }
+        } else {
+          Swal.fire("Oops", "Invalid credentials", "error");
+          console.log(response);
+        }
       } else {
         Swal.fire("Oops", "Invalid credentials", "error");
         console.log(response);
       }
     } catch (error) {
-      Swal.fire("Oops", "Error occurred during login", "error");
+      Swal.fire("Oops", "Wrong Username and Password", "error");
       console.log(error);
     }
   }

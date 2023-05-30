@@ -6,8 +6,10 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../../assets/subang.png";
 import Swal from "sweetalert2";
 
+
+
 const NavbarPage = () => {
-  const pengguna = JSON.parse(localStorage.getItem("pengguna"));
+  const loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"));
 
   function logout() {
     Swal.fire({
@@ -21,7 +23,7 @@ const NavbarPage = () => {
       cancelButtonText: "Tidak",
     }).then((result) => {
       if (result.isConfirmed) {
-        localStorage.removeItem("pengguna");
+        sessionStorage.removeItem("loggedInUser");
         Swal.fire("Okay", "Logout Berhasil", "success").then(() => {
           window.location.href = "/login";
         });
@@ -38,7 +40,7 @@ const NavbarPage = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto right">
-            {pengguna ? (
+            {loggedInUser ? (
               <>
                 <NavDropdown
                   title={<span style={{ color: "white" }}>Admin</span>}

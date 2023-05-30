@@ -181,6 +181,8 @@ const updateReportingReason = (request, reply) => {
   });
 };
 
+// Tambahan
+
 const vote = (request, reply) => {
   const { vote } = request.payload;
   const { id } = request.query;
@@ -198,6 +200,36 @@ const vote = (request, reply) => {
   });
 };
 
+const loginEmployee = (request, reply) => {
+  const { username, password } = request.payload;
+
+  return new Promise((resolve, reject) => {
+    employeeModel.loginEmployee(username, password, (error, results) => {
+      if (error) {
+        console.log(date + " : Request POST Login Employee error", error);
+        reject(error);
+      }
+
+      if (results.length > 0) {
+        console.log(date + " : Request POST Login Employee success code 200");
+        resolve({
+          status: "Success",
+          code: 200,
+          message: "Login successful",
+          position: results[0].position,
+        });
+      } else {
+        console.log(date + " : Request POST Login Employee failed code 401");
+        reject({
+          status: "Unauthorized",
+          code: 401,
+          message: "Invalid username or password",
+        });
+      }
+    });
+  });
+};
+
 export {
   home,
   getEmployee,
@@ -208,6 +240,9 @@ export {
   updateReporting,
   deleteEmployee,
   deleteReporting,
+
+  // Tambahan
   updateReportingReason,
   vote,
+  loginEmployee,
 };

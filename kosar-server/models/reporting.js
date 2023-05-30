@@ -27,6 +27,7 @@ reportingModel.getReportingByID = (id, callback) => {
   });
 };
 
+// Tambahan
 reportingModel.createReporting = (detail, callback) => {
   const saveDate = date.split("/");
   const workStatus = "Pending";
@@ -68,6 +69,8 @@ reportingModel.createReporting = (detail, callback) => {
   });
 };
 
+
+//Tambahan
 reportingModel.updateReporting = (id, update, callback) => {
   const saveDate = date.split("/");
   let query = `
@@ -107,6 +110,7 @@ reportingModel.deleteReporting = (id, callback) => {
   });
 };
 
+//Tambahan
 reportingModel.updateReportingReason = (id, reason, callback) => {
   const query = `
     UPDATE reporting 
@@ -123,6 +127,7 @@ reportingModel.updateReportingReason = (id, reason, callback) => {
   });
 };
 
+//Tambahan
 reportingModel.vote = (id, vote, callback) => {
   const query = `
     UPDATE reporting 
