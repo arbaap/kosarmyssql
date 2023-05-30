@@ -6,7 +6,6 @@ import Card from "react-bootstrap/Card";
 import { BsArrowRightSquare, BsTriangleFill, BsTriangle } from "react-icons/bs";
 
 function ModalKeluhan({ reporting, index }) {
-  
   const [voteCount, setVoteCount] = useState(reporting.vote);
 
   const [hasVoted, setHasVoted] = useState(false);
@@ -37,11 +36,13 @@ function ModalKeluhan({ reporting, index }) {
       });
   };
 
+  let statusText = reporting.work_status;
   let statusClass = "";
   switch (reporting.work_status) {
     case "Pending":
       return null;
-    case "Diproses":
+    case "Diterima":
+      statusText = "Diproses";
       statusClass = "status-diterima";
       break;
     case "Ditolak":
@@ -92,7 +93,7 @@ function ModalKeluhan({ reporting, index }) {
               }}
             >
               {reporting.complainants_name} |{" "}
-              <b className={statusClass}>{reporting.work_status}</b>
+              <b className={statusClass}>{statusText}</b>
             </Card.Text>
           </Card.Body>
         </Card>

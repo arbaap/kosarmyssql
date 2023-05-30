@@ -7,26 +7,6 @@ import { Chart, registerables } from "chart.js";
 import { LinearScale } from "chart.js";
 
 function Adminscreen() {
-  // const [showAdminContent, setShowAdminContent] = useState(false);
-
-  // useEffect(() => {
-  //   const pengguna = JSON.parse(localStorage.getItem("pengguna"));
-  //   if (!pengguna || !pengguna.isAdmin) {
-  //     Swal.fire({
-  //       title: "Akses Ditolak",
-  //       text: "Anda tidak memiliki izin untuk mengakses halaman ini.",
-  //       icon: "warning",
-  //       confirmButtonText: "OK",
-  //     }).then(() => {
-  //       window.location.href = "/login";
-  //     });
-
-  //     return;
-  //   }
-
-  //   setShowAdminContent(true);
-  // }, []);
-
   return (
     <Container className="tampilanadmin">
       <Tab.Container id="left-tabs-example" defaultActiveKey="laporan">
@@ -91,7 +71,7 @@ export function Dashboard() {
         setTotalReporting(totalReporting);
 
         const totalReportingDiterima = data.filter(
-          (reporting) => reporting.work_status === "Diproses"
+          (reporting) => reporting.work_status === "Diterima"
         ).length;
         setTotalReportingDiterima(totalReportingDiterima);
 
@@ -132,7 +112,7 @@ export function Dashboard() {
 
     datasets: [
       {
-        label: "Total reporting",
+        label: "Total Reporting",
         type: "bar",
         data: [totalreporting],
         backgroundColor: "#02a0fc",
@@ -247,11 +227,11 @@ export function Reportings() {
           return report;
         });
         setReportings(updatedList);
-        Swal.fire("Okay", "reporting Diterima", "success");
+        Swal.fire("Okay", "Reporting Accepted", "success");
       })
       .catch((error) => {
         console.error(error);
-        Swal.fire("Oops", "Something went wrong", "error");
+        Swal.fire("Oops", "Something Went Wrong", "error");
       });
   };
 
@@ -259,7 +239,7 @@ export function Reportings() {
     Swal.fire({
       title: "Alasan Penolakan",
       input: "textarea",
-      inputPlaceholder: "Masukkan alasan penolakan",
+      inputPlaceholder: "Masukkan Alasan Penolakan",
       showCancelButton: true,
       confirmButtonText: "Tolak",
       cancelButtonText: "Batal",
@@ -276,11 +256,11 @@ export function Reportings() {
               return report;
             });
             setReportings(updatedList);
-            Swal.fire("Okay", "reporting Ditolak", "success");
+            Swal.fire("Okay", "Reporting Rejected", "success");
           })
           .catch((error) => {
             console.error(error);
-            Swal.fire("Oops", "Something went wrong", "error");
+            Swal.fire("Oops", "Something Went Wrong", "error");
           });
       },
     });
@@ -315,7 +295,6 @@ export function Reportings() {
               <th>Judul Pengaduan</th>
               <th>Isi Pengaduan</th>
               <th>Tanggal</th>
-              <th>Status</th>
               <th>Aksi</th>
             </tr>
           </thead>
@@ -339,11 +318,10 @@ export function Reportings() {
                       year: "numeric",
                     })}
                   </td>
-                  <td>{reporting.work_status}</td>
-
                   <td>
                     {reporting.work_status !== "pending" && (
                       <Button
+                        className="terimareporting"
                         onClick={() =>
                           terimareporting(reporting.complaint_id, "Diterima")
                         }
@@ -479,11 +457,13 @@ export function Pengaduans() {
           </thead>
           <tbody>
             {currentReportings.map((reporting, index) => {
+              let statusText = reporting.work_status;
               let statusClass = "";
               switch (reporting.work_status) {
                 case "Pending":
                   return null;
-                case "Diproses":
+                case "Diterima":
+                  statusText = "Diproses";
                   statusClass = "status-diterima";
                   break;
                 case "Ditolak":
@@ -503,7 +483,7 @@ export function Pengaduans() {
                   <td style={{ width: "200px", wordBreak: "break-word" }}>
                     {reporting.reason}
                   </td>
-                  <td className={statusClass}>{reporting.work_status}</td>
+                  <td className={statusClass}>{statusText}</td>
                   <td>
                     {reporting.work_status !== "Selesai" &&
                       reporting.work_status !== "Ditolak" && (
