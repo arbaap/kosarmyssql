@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 import Card from "react-bootstrap/Card";
-import logo from "../assets/subang.png";
+import logo from "../../assets/subang.png"
 
-function TampilanLogin() {
+function LoginScreen() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -80,4 +80,4 @@ function TampilanLogin() {
   );
 }
 
-export default TampilanLogin;
+export default LoginScreen;

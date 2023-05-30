@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-function TampilanRegister() {
+function RegisterScreen() {
   const [name, setName] = useState("");
   const [nip, setNIP] = useState("");
   const [position, setPosition] = useState("");
@@ -113,4 +113,4 @@ function TampilanRegister() {
   );
 }
 
-export default TampilanRegister;
+export default RegisterScreen;

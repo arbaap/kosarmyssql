@@ -4,7 +4,7 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
-function TambahKeluhan() {
+function CreateReporting() {
   const [complainants_name, setcomplainants_name] = useState();
   const [complaint_category, setcomplaint_category] = useState("");
   const [complaint_title, setcomplaint_title] = useState();
@@ -16,10 +16,8 @@ function TambahKeluhan() {
       complaint_category,
       complaint_title,
       description,
-      work_status: "Pending", 
+      work_status: "Pending",
     };
-
-    console.log(newreporting);
 
     try {
       const result = await axios.post("/c/rep", newreporting);
@@ -112,4 +110,4 @@ function TambahKeluhan() {
   );
 }
 
-export default TambahKeluhan;
+export default CreateReporting;

@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { Button, Modal, Container, Col, Row } from "react-bootstrap";
 import { IoArrowBackOutline } from "react-icons/io5";
 
-function DetailKeluhan({ match }) {
+function DetailsReporting({ match }) {
   const [reportings, setReportings] = useState();
   const [showModal, setShowModal] = useState(false);
   const { complaint_id } = useParams();
@@ -37,7 +37,7 @@ function DetailKeluhan({ match }) {
       case "Pending":
         statusClass = "status-pending";
         break;
-      case "Diproses":
+      case "Diterima":
         statusClass = "status-diterima";
         backgroundColor = "#fec400";
         textColor = "white";
@@ -58,7 +58,7 @@ function DetailKeluhan({ match }) {
   }
 
   return (
-    <div className="container">
+    <Container>
       <div className="header">
         <div className="backbutton">
           <Link to="/home">
@@ -106,42 +106,46 @@ function DetailKeluhan({ match }) {
           )}
         </div>
       </div>
-      <div className="tampilanhome row justify-content-around bs m-5">
-        <div className="col">
-          {reportings ? (
-            <>
-              <h1 className="text-center">Detail</h1>
-              <br></br>
-              <p className="text-center">{reportings.description}</p>
-              {reportings.work_status === "Ditolak" && (
-                <>
-                  <Button
-                    onClick={handleModal}
-                    className="alasanpenolakan w-100"
-                  >
-                    Lihat Alasan Penolakan
-                  </Button>
-                  <Modal show={showModal} onHide={handleModal}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>Alasan Penolakan</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>{reportings.reason}</Modal.Body>
-                    <Modal.Footer>
-                      <Button variant="secondary" onClick={handleModal}>
-                        Tutup
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
-                </>
-              )}
-            </>
-          ) : (
-            <p>Loading...</p>
-          )}
-        </div>
-      </div>
-    </div>
+      <Row className="tampilanhome row justify-content-around bs m-5">
+        {reportings ? (
+          <>
+            <h1 className="text-center">Detail</h1>
+            <br></br>
+            <p className="text-center">{reportings.description}</p>
+            {reportings.work_status === "Ditolak" && (
+              <>
+                <Button
+                  onClick={handleModal}
+                  className="alasanpenolakan w-50 m-auto"
+                  style={{
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                >
+                  Lihat Alasan Penolakan
+                </Button>
+
+                <Modal show={showModal} onHide={handleModal}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Alasan Penolakan</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>{reportings.reason}</Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={handleModal}>
+                      Tutup
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
+              </>
+            )}
+          </>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </Row>
+    </Container>
   );
 }
 
-export default DetailKeluhan;
+export default DetailsReporting;

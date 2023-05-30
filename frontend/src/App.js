@@ -2,14 +2,14 @@ import React from "react";
 import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import NavbarKosar from "./components/NavbarKosar";
-import TampilanHome from "./components/TampilanHome";
-import TampilanRegister from "./components/TampilanRegister";
-import TampilanLogin from "./components/TampilanLogin";
-import TampilanAdmin from "./components/TampilanAdmin";
-import TambahKeluhan from "./components/TambahKeluhan";
-import DetailKeluhan from "./components/DetailKeluhan";
-import Welcome from "./components/Welcome";
+import NavbarPage from "./components/Navs/NavbarPage";
+import HomeScreen from "./components/Homes/HomeScreen";
+import RegisterScreen from "./components/Auths/RegisterScreen";
+import LoginScreen from "./components/Auths/LoginScreen";
+import AdminPanel from "./components/Admins/AdminPanel";
+import CreateReporting from "./components/Reportings/CreateReportings";
+import DetailsReporting from "./components/Reportings/DetailsReportings";
+import Welcome from "./components/Homes/WelcomeScreen";
 
 function App() {
   return (
@@ -17,23 +17,23 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="" element={<Welcome />} />
-          <Route path="/home" element={<TampilanHome />} />
-          <Route path="/tambahkeluhan" element={<TambahKeluhan />} />
-          <Route path="/register" element={<TampilanRegister />} />
-          <Route path="/login" element={<TampilanLogin />} />
+          <Route path="/home" element={<HomeScreen />} />
+          <Route path="/tambahkeluhan" element={<CreateReporting />} />
+          <Route path="/register" element={<RegisterScreen />} />
+          <Route path="/login" element={<LoginScreen />} />
 
           <Route
             path="/admin"
             element={
               <>
-                <NavbarKosar />
-                <TampilanAdmin />
+                <NavbarPage />
+                <AdminPanel />
               </>
             }
           />
           <Route
             path="/detailkeluhan/:complaint_id"
-            element={<DetailKeluhan />}
+            element={<DetailsReporting />}
           />
         </Routes>
       </BrowserRouter>

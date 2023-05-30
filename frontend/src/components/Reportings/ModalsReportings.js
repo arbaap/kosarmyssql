@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 
 import { BsArrowRightSquare, BsTriangleFill, BsTriangle } from "react-icons/bs";
 
-function ModalKeluhan({ reporting, index }) {
+function ModalReporting({ reporting, index }) {
   const [voteCount, setVoteCount] = useState(reporting.vote);
 
   const [hasVoted, setHasVoted] = useState(false);
@@ -102,4 +102,4 @@ function ModalKeluhan({ reporting, index }) {
   );
 }
 
-export default ModalKeluhan;
+export default ModalReporting;

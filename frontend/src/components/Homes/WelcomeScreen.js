@@ -1,8 +1,8 @@
 import React from "react";
-import logo from "../assets/subang.png";
+import logo from "../../assets/subang.png";
 import { Link } from "react-router-dom";
 
-const Welcome = () => {
+const WelcomeScreen = () => {
   return (
     <div className="welcome-page">
       <div className="wrapper">
@@ -26,4 +26,4 @@ const Welcome = () => {
   );
 };
 
-export default Welcome;
+export default WelcomeScreen;
