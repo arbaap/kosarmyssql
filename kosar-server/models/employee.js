@@ -85,7 +85,7 @@ employeeModel.deleteEmployee = (nip, callback) => {
   });
 };
 
-//Tambahan
+//Tambahanz
 
 employeeModel.loginEmployee = (username, password, callback) => {
   const query = `

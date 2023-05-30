@@ -19,18 +19,28 @@ function CreateReporting() {
       work_status: "Pending",
     };
 
+    if (
+      !complainants_name ||
+      !complaint_category ||
+      !complaint_title ||
+      !description
+    ) {
+      Swal.fire("Oops", "Mohon isi semua inputan", "error");
+      return;
+    }
+
     try {
       const result = await axios.post("/c/rep", newreporting);
 
       console.log(result);
-      Swal.fire("Okay", "Berhasil Tambah reporting", "success").then(
+      Swal.fire("Okay", "Success Create Reporting", "success").then(
         (result) => {
           window.location.href = "/home";
         }
       );
     } catch (error) {
       console.log(error);
-      Swal.fire("oops", "something went wrong", "error");
+      Swal.fire("Oops", "Something went wrong", "error");
     }
   }
 

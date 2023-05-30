@@ -1,6 +1,7 @@
 /* eslint linebreak-style: ["error", "windows"] */
 import employeeModel from "../models/employee.js";
 import reportingModel from "../models/reporting.js";
+import verificationModel from "../models/verification.js";
 
 const date = new Date().toDateString("id-ID");
 
@@ -230,6 +231,78 @@ const loginEmployee = (request, reply) => {
   });
 };
 
+const getCode = (request, reply) => {
+  return new Promise((resolve, reject) => {
+    verificationModel.getCode((error, results) => {
+      if (error) {
+        console.log("Error while fetching kode:", error);
+        reject(error);
+      }
+      resolve({
+        status: "Success",
+        code: 200,
+        data: results,
+      });
+    });
+  });
+};
+
+const createCode = (request, reply) => {
+  const { code } = request.payload;
+
+  return new Promise((resolve, reject) => {
+    verificationModel.createCode(code, (error, result) => {
+      if (error) {
+        console.log("Error while creating kode:", error);
+        reject(error);
+      }
+      resolve({
+        status: "Success",
+        code: 201,
+        message: "Kode created successfully",
+        data: result,
+      });
+    });
+  });
+};
+
+
+const sendCode = (request, reply) => {
+  const { code } = request.payload;
+
+  return new Promise((resolve, reject) => {
+    verificationModel.getCode((error, results) => {
+      if (error) {
+        console.log("Error while fetching kode:", error);
+        reject(error);
+      }
+
+      // Check if the provided code exists in the results
+      const matchingCode = results.find((result) => result.code === code);
+      if (matchingCode) {
+        // Code found in the database
+        // Perform the logic to send the code (e.g., via email, SMS, etc.)
+        // Replace the following console.log statement with your code sending logic
+        console.log(`Sending code ${code} to the user`);
+
+        resolve({
+          status: "Success",
+          code: 200,
+          message: "Code sent successfully",
+        });
+      } else {
+        // Code not found in the database
+        reject({
+          status: "Error",
+          code: 404,
+          message: "Invalid code",
+        });
+      }
+    });
+  });
+};
+
+
 export {
   home,
   getEmployee,
@@ -245,4 +318,7 @@ export {
   updateReportingReason,
   vote,
   loginEmployee,
+  getCode,
+  createCode,
+  sendCode,
 };

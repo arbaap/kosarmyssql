@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 import Card from "react-bootstrap/Card";
 import logo from "../../assets/subang.png";
@@ -9,6 +11,25 @@ import logo from "../../assets/subang.png";
 function LoginScreen() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [code, setCode] = useState("");
+  const [showModal, setShowModal] = useState(true);
+
+  async function verifyCode() {
+    try {
+      const response = await axios.post("/s/verify", { code });
+      console.log(response.data);
+
+      if (response.status === 200 && response.data.status === "Success") {
+        setShowModal(false);
+        Swal.fire("Success", "Code Verified", "success");
+      } else {
+        Swal.fire("Oops", "Invalid code", "error");
+      }
+    } catch (error) {
+      console.log(error);
+      Swal.fire("Oops", "Failed to verify code", "error");
+    }
+  }
 
   async function login() {
     const credentials = {
@@ -96,6 +117,31 @@ function LoginScreen() {
           </Card>
         </div>
       </div>
+
+      {/* Verification Modal */}
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Verification Code</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Please enter the verification code:</p>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Verification Code"
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+          />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={verifyCode}>
+            Verify
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

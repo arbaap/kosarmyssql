@@ -63,6 +63,21 @@ const routes = [
     method: "POST",
     handler: handler.loginEmployee,
   },
+  {
+    path: "/verify",
+    method: "GET",
+    handler: handler.getCode,
+  },
+  {
+    path: "/c/veriy",
+    method: "POST",
+    handler: handler.createCode,
+  },
+  {
+    path: "/s/verify",
+    method: "POST",
+    handler: handler.sendCode,
+  },
 ];
 
 export default routes;
