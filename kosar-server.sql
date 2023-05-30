@@ -159,7 +159,7 @@ ALTER TABLE
 
 ALTER TABLE `reporting`
 ADD
-    `reason` VARCHAR(25) NOT NULL AFTER `work_status`;
+    `reason` text NOT NULL AFTER `work_status`;
 
 COMMIT;
 
