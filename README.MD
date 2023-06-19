@@ -1,6 +1,6 @@
 # KosarVillage
 
-Don't forget to import the database (kosar-server.sql) to localhost/phpmyadmin
+Don't forget to import the database ( https://github.com/arbaap/kosarmyssql/blob/main/kosar-server.sql ) to localhost/phpmyadmin
 
 - Run npm install in kosar-server folder
   ( nodemon index )
