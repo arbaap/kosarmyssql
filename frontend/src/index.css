@@ -306,7 +306,7 @@ b {
 }
 
 .status-pending {
-  color: #fec400;
+  color: #9932cc;
 }
 
 .status-diterima {
@@ -319,6 +319,33 @@ b {
 
 .status-selesai {
   color: #14bd96;
+}
+
+.status-pending-prof {
+  background-color: #9932cc;
+}
+
+.status-diterima-prof {
+  background-color: #fec400;
+}
+
+.status-ditolak-prof {
+  background-color: #f12b2c;
+}
+
+.status-selesai-prof {
+  background-color: #14bd96;
+}
+
+.status-diterima-prof,
+.status-ditolak-prof,
+.status-pending-prof,
+.status-selesai-prof {
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
 }
 
 .header {
@@ -362,4 +389,16 @@ b {
 .subjudul {
   color: white;
   margin-top: 10px;
+}
+
+.bs {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-top: 60px;
+  border-radius: 5px;
+  padding: 20px;
+  background: white;
+}
+
+.myprf {
+  margin-top: 20px;
 }

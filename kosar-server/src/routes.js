@@ -73,10 +73,42 @@ const routes = [
     method: "POST",
     handler: handler.createCode,
   },
+
   {
     path: "/s/verify",
     method: "POST",
     handler: handler.sendCode,
+  },
+  {
+    path: "/user/reg",
+    method: "POST",
+    handler: handler.createUser,
+  },
+  {
+    path: "/user",
+    method: "GET",
+    handler: handler.getUser,
+  },
+  {
+    path: "/usersbyid",
+    method: "GET",
+    handler: handler.getUsersByUserId,
+  },
+
+  {
+    path: "/user/log",
+    method: "POST",
+    handler: handler.loginUser,
+  },
+  {
+    path: "/reporting/byUserId",
+    method: "GET",
+    handler: handler.getReportingByUserId,
+  },
+  {
+    path: "/reporting/byUserId",
+    method: "POST",
+    handler: handler.getReportingByUserId,
   },
 ];
 

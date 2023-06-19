@@ -60,7 +60,7 @@ function AdminReportings() {
   return (
     <Row>
       <Col>
-        <h1>Semua Laporan</h1>
+        <h1>All Reportings</h1>
         <Table bordered>
           <thead>
             <tr>

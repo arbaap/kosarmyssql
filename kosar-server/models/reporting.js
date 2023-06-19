@@ -44,7 +44,8 @@ reportingModel.createReporting = (detail, callback) => {
     complaint_category, 
     description, 
     work_status, 
-    vote
+    vote,
+    user_id
     ) VALUES (
         '${saveDate[2]}-${saveDate[1]}-${saveDate[0]}', 
         '${saveDate[2]}-${saveDate[1]}-${saveDate[0]}', 
@@ -56,7 +57,8 @@ reportingModel.createReporting = (detail, callback) => {
         '${detail.complaint_category}', 
         '${detail.description}', 
         '${workStatus}',  
-        '0'
+        '0',
+        '${detail.user_id}'
         );
     `;
 
@@ -68,7 +70,6 @@ reportingModel.createReporting = (detail, callback) => {
     }
   });
 };
-
 
 //Tambahan
 reportingModel.updateReporting = (id, update, callback) => {
@@ -136,6 +137,19 @@ reportingModel.vote = (id, vote, callback) => {
   `;
 
   connection.query(query, (error, results) => {
+    if (error) {
+      callback(error, null);
+    } else {
+      callback(null, results);
+    }
+  });
+};
+
+
+//rev
+reportingModel.getReportingByUserId = (userId, callback) => {
+  const query = `SELECT * FROM reporting WHERE user_id = ?`;
+  connection.query(query, userId, (error, results) => {
     if (error) {
       callback(error, null);
     } else {

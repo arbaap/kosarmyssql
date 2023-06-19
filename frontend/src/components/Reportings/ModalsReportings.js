@@ -11,7 +11,7 @@ function ModalReporting({ reporting, index }) {
   const [hasVoted, setHasVoted] = useState(false);
 
   useEffect(() => {
-    const hasVotedBefore = localStorage.getItem(
+    const hasVotedBefore = sessionStorage.getItem(
       `voted-${reporting.complaint_id}`
     );
     if (hasVotedBefore) {
@@ -26,10 +26,9 @@ function ModalReporting({ reporting, index }) {
     axios
       .put(`/u/rep/vote?id=${reporting.complaint_id}`, { vote: voteCount + 1 })
       .then((response) => {
-        // Update jumlah vote pada komponen
         setVoteCount(voteCount + 1);
         setHasVoted(true);
-        localStorage.setItem(`voted-${reporting.complaint_id}`, true);
+        sessionStorage.setItem(`voted-${reporting.complaint_id}`, true);
       })
       .catch((error) => {
         console.log(error);

@@ -85,11 +85,11 @@ function LoginScreen() {
             <Card.Body>
               <Card.Title className="text-center">
                 <img className="img-logo" src={logo} alt="" />
-                <h2>Selamat datang di</h2>
+                <h2>Welcome to</h2>
                 <h1>Sistem Informasi Pengaduan Masyarakat Desa Kosar</h1>
               </Card.Title>
               <Card.Text>
-                <h2 className="judullogin">Masuk</h2>
+                <h2 className="judullogin">Login</h2>
                 <input
                   type="text"
                   className="form-control"
@@ -105,7 +105,7 @@ function LoginScreen() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <button className="btnlogin btn btn-block" onClick={login}>
-                  Masuk
+                  Login
                 </button>
                 <div className="mt-2 text-center" style={{ color: "black" }}>
                   <Link to="/register" className="">

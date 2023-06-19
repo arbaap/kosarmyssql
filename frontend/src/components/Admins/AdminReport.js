@@ -99,7 +99,7 @@ function AdminReport() {
   return (
     <Row>
       <Col md={12}>
-        <h1>Laporan Masuk</h1>
+        <h1>Incoming Report</h1>
 
         <Table bordered>
           <thead>

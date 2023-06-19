@@ -7,7 +7,6 @@ import AdminReport from "./AdminReport";
 import Swal from "sweetalert2";
 
 function AdminPanel() {
- 
   const [showAdminContent, setShowAdminContent] = useState(false);
 
   useEffect(() => {
@@ -25,6 +24,8 @@ function AdminPanel() {
       }).then((result) => {
         if (result.isConfirmed) {
           window.location.href = "/login";
+        } else {
+          window.location.href = "/";
         }
       });
       return;

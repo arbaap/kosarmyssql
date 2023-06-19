@@ -2,6 +2,7 @@
 import employeeModel from "../models/employee.js";
 import reportingModel from "../models/reporting.js";
 import verificationModel from "../models/verification.js";
+import userModel from "../models/user.js";
 
 const date = new Date().toDateString("id-ID");
 
@@ -266,7 +267,6 @@ const createCode = (request, reply) => {
   });
 };
 
-
 const sendCode = (request, reply) => {
   const { code } = request.payload;
 
@@ -302,6 +302,136 @@ const sendCode = (request, reply) => {
   });
 };
 
+// Adding Login User
+
+const getUser = (request, reply) => {
+  const { nik } = request.query;
+  if (nik) {
+    return new Promise((resolve, reject) => {
+      userModel.getUsersByNIK(nik, (error, result) => {
+        if (error) reject(error);
+        console.log(date + " : Request GET Users by NIK success code 200");
+        resolve({
+          status: "Success",
+          code: 200,
+          data: result,
+        });
+      });
+    });
+  }
+
+  return new Promise((resolve, reject) => {
+    userModel.getAllusers((error, results) => {
+      if (error) reject(error);
+      console.log(date + " : Request GET Users success code 200");
+      resolve({
+        status: "Success",
+        code: 200,
+        data: results,
+      });
+    });
+  });
+};
+
+const getUsersByUserId = (request, reply) => {
+  const { userId } = request.query;
+  if (userId) {
+    return new Promise((resolve, reject) => {
+      userModel.getUsersByUserId(userId, (error, result) => {
+        if (error) reject(error);
+        console.log(date + " : Request GET Users by user_id success code 200");
+        resolve({
+          status: "Success",
+          code: 200,
+          data: result,
+        });
+      });
+    });
+  } else {
+    return new Promise((resolve, reject) => {
+      reject({
+        status: "Error",
+        code: 400,
+        message: "Missing user_id parameter",
+      });
+    });
+  }
+};
+
+const createUser = (request, reply) => {
+  const user = request.payload;
+  return new Promise((resolve, reject) => {
+    userModel.createUser(user, (error, results) => {
+      if (error) reject(error);
+      console.log(date + " : Request POST User success code 201");
+      resolve({
+        status: "Success",
+        code: 201,
+        data: results,
+      });
+    });
+  });
+};
+
+const loginUser = (request, reply) => {
+  const { nik, password } = request.payload;
+
+  return new Promise((resolve, reject) => {
+    userModel.loginUser(nik, password, (error, results) => {
+      if (error) {
+        console.log(date + " : Request POST Login User error", error);
+        reject(error);
+      }
+
+      if (results.length > 0) {
+        console.log(date + " : Request POST Login User success code 200");
+        const { user_id, email, name } = results[0];
+        resolve({
+          status: "Success",
+          code: 200,
+          message: "Login successful",
+          user_id,
+          email,
+          name,
+        });
+      } else {
+        console.log(date + " : Request POST Login User failed code 401");
+        reject({
+          status: "Unauthorized",
+          code: 401,
+          message: "Invalid nik or password",
+        });
+      }
+    });
+  });
+};
+
+const getReportingByUserId = (request, reply) => {
+  const { userId } = request.query;
+  if (userId) {
+    return new Promise((resolve, reject) => {
+      reportingModel.getReportingByUserId(userId, (error, result) => {
+        if (error) reject(error);
+        console.log(
+          date + " : Request GET Reporting by user_id success code 200"
+        );
+        resolve({
+          status: "Success",
+          code: 200,
+          data: result,
+        });
+      });
+    });
+  } else {
+    return new Promise((resolve, reject) => {
+      reject({
+        status: "Error",
+        code: 400,
+        message: "Missing user_id parameter",
+      });
+    });
+  }
+};
 
 export {
   home,
@@ -321,4 +451,11 @@ export {
   getCode,
   createCode,
   sendCode,
+
+  //User
+  createUser,
+  getUser,
+  loginUser,
+  getUsersByUserId,
+  getReportingByUserId,
 };
