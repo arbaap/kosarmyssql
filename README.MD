@@ -2,6 +2,13 @@
 
 Don't forget to import the database (kosar-server.sql) to localhost/phpmyadmin
 
+- Run npm install in kosar-server folder
+  ( nodemon index )
+
+- Run npm install in frontend folder
+  ( npm start )
+
+
 ## Team Profile
 
 #### Team : 5 - Proyek Perangkat Lunak
