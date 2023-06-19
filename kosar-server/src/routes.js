@@ -105,11 +105,6 @@ const routes = [
     method: "GET",
     handler: handler.getReportingByUserId,
   },
-  {
-    path: "/reporting/byUserId",
-    method: "POST",
-    handler: handler.getReportingByUserId,
-  },
 ];
 
 export default routes;

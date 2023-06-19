@@ -40,14 +40,14 @@ function ModalReporting({ reporting, index }) {
   switch (reporting.work_status) {
     case "Pending":
       return null;
-    case "Diterima":
-      statusText = "Diproses";
+    case "Accepted":
+      statusText = "Processed";
       statusClass = "status-diterima";
       break;
-    case "Ditolak":
+    case "Rejected":
       statusClass = "status-ditolak";
       break;
-    case "Selesai":
+    case "Completed":
       statusClass = "status-selesai";
       break;
     default:

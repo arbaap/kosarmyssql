@@ -79,14 +79,14 @@ function AdminReportings() {
               switch (reporting.work_status) {
                 case "Pending":
                   return null;
-                case "Diterima":
-                  statusText = "Diproses";
+                case "Accepted":
+                  statusText = "Processed";
                   statusClass = "status-diterima";
                   break;
-                case "Ditolak":
+                case "Rejected":
                   statusClass = "status-ditolak";
                   break;
-                case "Selesai":
+                case "Completed":
                   statusClass = "status-selesai";
                   break;
                 default:
@@ -102,13 +102,16 @@ function AdminReportings() {
                   </td>
                   <td className={statusClass}>{statusText}</td>
                   <td>
-                    {reporting.work_status !== "Selesai" &&
-                      reporting.work_status !== "Ditolak" && (
+                    {reporting.work_status !== "Completed" &&
+                      reporting.work_status !== "Rejected" && (
                         <Button
                           variant="info"
                           className="btn-action"
                           onClick={() =>
-                            selesaireporting(reporting.complaint_id, "Selesai")
+                            selesaireporting(
+                              reporting.complaint_id,
+                              "Completed"
+                            )
                           }
                         >
                           Completed

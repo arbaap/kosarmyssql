@@ -48,7 +48,7 @@ function RejectedReportings() {
   }
 
   const reportingsDitolak = reportings.filter(
-    (reporting) => reporting.work_status === "Ditolak"
+    (reporting) => reporting.work_status === "Rejected"
   );
 
   const sortedreportings = reportingsDitolak.sort((a, b) => b.vote - a.vote);

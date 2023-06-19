@@ -37,17 +37,17 @@ function DetailsReporting({ match }) {
       case "Pending":
         statusClass = "status-pending";
         break;
-      case "Diterima":
+      case "Accepted":
         statusClass = "status-diterima";
         backgroundColor = "#fec400";
         textColor = "white";
         break;
-      case "Ditolak":
+      case "Rejected":
         statusClass = "status-ditolak";
         backgroundColor = "#f12b2c";
         textColor = "white";
         break;
-      case "Selesai":
+      case "Completed":
         statusClass = "status-selesai";
         backgroundColor = "#14bd96";
         textColor = "white";

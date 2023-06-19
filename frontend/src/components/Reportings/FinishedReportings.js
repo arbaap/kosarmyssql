@@ -48,7 +48,7 @@ function FinishedReportings() {
   }
 
   const reportingsSelesai = reportings.filter(
-    (reporting) => reporting.work_status === "Selesai"
+    (reporting) => reporting.work_status === "Completed"
   );
 
   const sortedreportings = reportingsSelesai.sort((a, b) => b.vote - a.vote);

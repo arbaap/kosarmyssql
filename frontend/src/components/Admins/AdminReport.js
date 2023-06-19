@@ -49,12 +49,12 @@ function AdminReport() {
 
   const tolakreporting = (id, newStatus) => {
     Swal.fire({
-      title: "Alasan Penolakan",
+      title: "Reasons for Rejection",
       input: "textarea",
-      inputPlaceholder: "Masukkan Alasan Penolakan",
+      inputPlaceholder: "Enter a Reason for Rejection",
       showCancelButton: true,
-      confirmButtonText: "Tolak",
-      cancelButtonText: "Batal",
+      confirmButtonText: "Reject",
+      cancelButtonText: "Cancel",
       showLoaderOnConfirm: true,
       preConfirm: (reason) => {
         return axios
@@ -160,7 +160,7 @@ function AdminReport() {
                       <Button
                         className="terimareporting"
                         onClick={() =>
-                          terimareporting(reporting.complaint_id, "Diterima")
+                          terimareporting(reporting.complaint_id, "Accepted")
                         }
                       >
                         Accept
@@ -171,7 +171,7 @@ function AdminReport() {
                         variant="danger"
                         className="tolakreporting"
                         onClick={() =>
-                          tolakreporting(reporting.complaint_id, "Ditolak")
+                          tolakreporting(reporting.complaint_id, "Rejected")
                         }
                       >
                         Reject
@@ -195,7 +195,6 @@ function AdminReport() {
           onPageChange={handlePageChange}
         />
 
-        {/* Modal untuk menampilkan deskripsi penuh */}
         <Modal show={selectedReport !== null} onHide={closeDescriptionModal}>
           <Modal.Header closeButton>
             <Modal.Title>Deskripsi Laporan</Modal.Title>

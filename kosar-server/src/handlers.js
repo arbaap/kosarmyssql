@@ -276,13 +276,8 @@ const sendCode = (request, reply) => {
         console.log("Error while fetching kode:", error);
         reject(error);
       }
-
-      // Check if the provided code exists in the results
       const matchingCode = results.find((result) => result.code === code);
       if (matchingCode) {
-        // Code found in the database
-        // Perform the logic to send the code (e.g., via email, SMS, etc.)
-        // Replace the following console.log statement with your code sending logic
         console.log(`Sending code ${code} to the user`);
 
         resolve({
@@ -291,7 +286,6 @@ const sendCode = (request, reply) => {
           message: "Code sent successfully",
         });
       } else {
-        // Code not found in the database
         reject({
           status: "Error",
           code: 404,
@@ -302,7 +296,7 @@ const sendCode = (request, reply) => {
   });
 };
 
-// Adding Login User
+// Login User
 
 const getUser = (request, reply) => {
   const { nik } = request.query;

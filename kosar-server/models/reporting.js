@@ -77,11 +77,11 @@ reportingModel.updateReporting = (id, update, callback) => {
   let query = `
     UPDATE reporting 
     SET updatedAt = '${saveDate[2]}-${saveDate[1]}-${saveDate[0]}',
-    work_status = '${update.work_status || "Diterima" || "Selesai"}'
+    work_status = '${update.work_status || "Accepted" || "Completed"}'
     WHERE complaint_id = '${id}';
   `;
 
-  if (update.work_status === "Ditolak") {
+  if (update.work_status === "Rejected") {
     query = `
       UPDATE reporting 
       SET updatedAt = '${saveDate[2]}-${saveDate[1]}-${saveDate[0]}',
@@ -144,7 +144,6 @@ reportingModel.vote = (id, vote, callback) => {
     }
   });
 };
-
 
 //rev
 reportingModel.getReportingByUserId = (userId, callback) => {

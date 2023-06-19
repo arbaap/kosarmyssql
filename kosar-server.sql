@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Bulan Mei 2023 pada 22.26
+-- Waktu pembuatan: 19 Jun 2023 pada 20.36
 -- Versi server: 10.4.16-MariaDB
 -- Versi PHP: 7.4.12
 
@@ -44,7 +44,8 @@ CREATE TABLE `employee` (
 INSERT INTO `employee` (`employee_number`, `nip`, `name`, `position`, `status`, `username`, `password`) VALUES
 (1, 1234567890, 'Admin', 'Admin', 'Active', 'admin', '123'),
 (2, 123009123, 'Admins', 'Admin', 'Active', 'admin', 'admin'),
-(4, 2147483647, 'arba', 'is', 'arba', 'arba', 'arba');
+(4, 2147483647, 'arba', 'is', 'arba', 'arba', 'arba'),
+(5, 0, 'arba', 'undefined', 'undefined', 'undefined', 'arba123');
 
 -- --------------------------------------------------------
 
@@ -64,30 +65,46 @@ CREATE TABLE `reporting` (
   `description` text NOT NULL,
   `work_status` varchar(20) NOT NULL,
   `reason` text NOT NULL,
-  `vote` int(11) NOT NULL
+  `vote` int(11) NOT NULL,
+  `user_id` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `reporting`
 --
 
-INSERT INTO `reporting` (`updatedAt`, `createdAt`, `complaint_number`, `complaint_id`, `complainants_name`, `complaint_title`, `complaint_date`, `complaint_category`, `description`, `work_status`, `reason`, `vote`) VALUES
-('2023-05-30', '2023-05-30', 1, '8bde91f4-89b2-49dd-bbe8-0', 'Arba Adhy Pamungkas', 'Pelanggan', '2023-05-30', 'Infrastruktur', 'Saya ingin melaporkan masalah yang saya alami dengan layanan pelanggan perusahaan Anda. Saya telah mencoba menghubungi tim dukungan pelanggan melalui email dan telepon, tetapi tidak ada tanggapan yang diberikan. Permintaan bantuan saya terkait dengan faktur yang salah dan pembayaran yang tidak dicatat dengan benar dalam sistem Anda.', 'Selesai', '', 0),
-('2023-05-31', '2023-05-30', 2, 'a565ddf7-ce3c-498e-94d8-9', 'Agus Tri Adiana', 'Jalan', '2023-05-30', 'Infrastruktur', 'Saya ingin melaporkan masalah yang saya alami dengan layanan pelanggan perusahaan Anda. Saya telah mencoba menghubungi tim dukungan pelanggan melalui email dan telepon, tetapi tidak ada tanggapan yang diberikan. Permintaan bantuan saya terkait dengan faktur yang salah dan pembayaran yang tidak dicatat dengan benar dalam sistem Anda.', 'Selesai', '', 0),
-('2023-05-30', '2023-05-30', 3, '38fcfcda-9c4c-4ee3-9451-8', 'Azmi Aldi Syahrial', 'Lampu', '2023-05-30', 'Keamanan dan Ketertiban', 'Saya ingin melaporkan masalah yang saya alami dengan layanan pelanggan perusahaan Anda. Saya telah mencoba menghubungi tim dukungan pelanggan melalui email dan telepon, tetapi tidak ada tanggapan yang diberikan. Permintaan bantuan saya terkait dengan faktur yang salah dan pembayaran yang tidak dicatat dengan benar dalam sistem Anda.', 'Ditolak', 'Pengaduan Bohong', 0),
-('2023-05-30', '2023-05-30', 4, 'dac6b819-aa4f-45b7-96a0-1', 'Arief Roihan Nur Rahman', 'Pembangunan', '2023-05-30', 'Kesehatan Masyarakat', 'Saya ingin melaporkan masalah yang saya alami dengan layanan pelanggan perusahaan Anda. Saya telah mencoba menghubungi tim dukungan pelanggan melalui email dan telepon, tetapi tidak ada tanggapan yang diberikan. Permintaan bantuan saya terkait dengan faktur yang salah dan pembayaran yang tidak dicatat dengan benar dalam sistem Anda.', 'Ditolak', 'Pengaduan Palsu', 0),
-('2023-05-31', '2023-05-30', 5, 'adb1e705-0a10-43e6-b20f-7', 'Ayuni Tia Sari', 'Longsor', '2023-05-30', 'Keamanan dan Ketertiban', 'Saya ingin melaporkan masalah yang saya alami dengan layanan pelanggan perusahaan Anda. Saya telah mencoba menghubungi tim dukungan pelanggan melalui email dan telepon, tetapi tidak ada tanggapan yang diberikan. Permintaan bantuan saya terkait dengan faktur yang salah dan pembayaran yang tidak dicatat dengan benar dalam sistem Anda.', 'Diterima', '', 0),
-('2023-05-31', '2023-05-30', 6, 'da818955-bc51-4220-9fbb-b', 'Arbaap', 'Pembangunan', '2023-05-30', 'Keamanan dan Ketertiban', 'Saya ingin melaporkan masalah yang saya alami dengan layanan pelanggan perusahaan Anda. Saya telah mencoba menghubungi tim dukungan pelanggan melalui email dan telepon, tetapi tidak ada tanggapan yang diberikan. Permintaan bantuan saya terkait dengan faktur yang salah dan pembayaran yang tidak dicatat dengan benar dalam sistem Anda.', 'Diterima', '', 0),
-('2023-05-31', '2023-05-30', 7, 'dc787bbb-f91b-4b4b-8e20-e', 'Arba Adhy', 'Longsor', '2023-05-30', 'Infrastruktur', 'Saya ingin melaporkan masalah yang saya alami dengan layanan pelanggan perusahaan Anda. Saya telah mencoba menghubungi tim dukungan pelanggan melalui email dan telepon, tetapi tidak ada tanggapan yang diberikan. Permintaan bantuan saya terkait dengan faktur yang salah dan pembayaran yang tidak dicatat dengan benar dalam sistem Anda.', 'Ditolak', 'Bohongss', 0),
-('2023-05-31', '2023-05-30', 8, '3e63bef5-7052-4456-8030-8', 'Agus Tri', 'Jalan Rusak', '2023-05-30', 'Infrastruktur', 'Saya ingin melaporkan masalah yang saya alami dengan layanan pelanggan perusahaan Anda. Saya telah mencoba menghubungi tim dukungan pelanggan melalui email dan telepon, tetapi tidak ada tanggapan yang diberikan. Permintaan bantuan saya terkait dengan faktur yang salah dan pembayaran yang tidak dicatat dengan benar dalam sistem Anda.', 'Selesai', '', 0),
-('2023-05-31', '2023-05-30', 9, '2fcec0d4-2efa-4f0b-bfa0-4', 'Arief Roihan', 'Lampu Rusak', '2023-05-30', 'Pelayan Publik', 'Saya ingin melaporkan masalah yang saya alami dengan layanan pelanggan perusahaan Anda. Saya telah mencoba menghubungi tim dukungan pelanggan melalui email dan telepon, tetapi tidak ada tanggapan yang diberikan. Permintaan bantuan saya terkait dengan faktur yang salah dan pembayaran yang tidak dicatat dengan benar dalam sistem Anda.', 'Diterima', '', 0),
-('2023-05-30', '2023-05-30', 10, '91efc3d5-9b75-4790-a220-f', 'Adhy Pamungkas', 'Pembangunan', '2023-05-30', 'Pelayan Publik', 'Saya berharap masalah ini dapat segera ditangani dengan baik. Saya mengharapkan komunikasi yang jelas dan respon yang cepat dari tim dukungan pelanggan Anda. Mohon memberikan perhatian yang serius terhadap masalah ini agar dapat diselesaikan dengan baik dan memulihkan kepercayaan saya terhadap perusahaan Anda.', 'Diterima', '', 0),
-('2023-05-31', '2023-05-30', 11, '6e6cbd9d-f666-49d7-a1ce-0', 'Arif Roy', 'Covid-19', '2023-05-30', 'Kesehatan Masyarakat', 'Saya berharap masalah ini dapat segera ditangani dengan baik. Saya mengharapkan komunikasi yang jelas dan respon yang cepat dari tim dukungan pelanggan Anda. Mohon memberikan perhatian yang serius terhadap masalah ini agar dapat diselesaikan dengan baik dan memulihkan kepercayaan saya terhadap perusahaan Anda.', 'Selesai', '', 0),
-('2023-05-31', '2023-05-31', 12, 'b8c17820-86cb-49dc-9bd8-8', 'Arbaa', 'Proyek', '2023-05-31', 'Pelayan Publik', 'Saya ingin melaporkan masalah yang saya alami deng...', 'Diterima', '', 0),
-('2023-05-31', '2023-05-31', 13, '627d2503-7cb3-44da-a90e-b', 'Arbaad', 'Jalan Rusak', '2023-05-31', 'Infrastruktur', 'Form Pengaduan Silahkan Sampaikan Pengaduan Anda Langsung Kepada Kami', 'Ditolak', 'Jangan Bohong', 0),
-('2023-05-31', '2023-05-31', 16, '9dfc4011-9a67-486e-97a2-1', 'Arbaas', 'Pengaduan', '2023-05-31', 'Infrastruktur', 'Form Pengaduan Silahkan Sampaikan Pengaduan Anda Langsung Kepada Kami', 'Selesai', '', 0),
-('2023-05-31', '2023-05-31', 17, '770256d4-5016-487f-8c66-6', 'Arbaas', 'Pengaduans', '2023-05-31', 'Infrastruktur', 'Silahkan Sampaikan Pengaduan Anda Langsung Kepada Kami', 'Pending', '', 0),
-('2023-05-31', '2023-05-31', 18, 'b0a2cc53-9dd8-4e97-9374-1', 'Arbaal', 'Jalan', '2023-05-31', 'Pelayan Publik', 'Silahkan Sampaikan Pengaduan Anda Langsung Kepada Kami', 'Ditolak', 'Bohong', 0);
+INSERT INTO `reporting` (`updatedAt`, `createdAt`, `complaint_number`, `complaint_id`, `complainants_name`, `complaint_title`, `complaint_date`, `complaint_category`, `description`, `work_status`, `reason`, `vote`, `user_id`) VALUES
+('2023-06-19', '2023-06-19', 44, 'ac1cf6c0-d89a-40f4-a5fb-f', 'Arba', 'Jalan', '2023-06-19', 'Infrastruktur', 'Jalan Rusak', 'Completed', '', 2, '2'),
+('2023-06-19', '2023-06-19', 47, '1a96f0e9-3934-4ba2-97e1-6', 'Arba', 'Jalan Rusak', '2023-06-19', 'Infrastruktur', 'Saya ingin mengajukan pengaduan terkait kondisi jalan desa yang rusak parah. Jalan ini merupakan akses utama bagi penduduk desa untuk beraktivitas sehari-hari, termasuk untuk mengirimkan hasil pertanian dan berangkat kerja. Namun, selama beberapa bulan terakhir, jalan ini semakin parah dan tidak layak untuk dilewati. Permukaannya berlubang-lubang besar, banyak batu yang terlepas, dan beberapa bagian jalan bahkan sudah retak. Kondisi jalan yang buruk ini mengganggu mobilitas kami dan juga membahayakan keselamatan pengguna jalan, terutama saat hujan karena jalan menjadi sangat licin. Saya berharap pemerintah desa dapat segera mengatasi masalah ini dengan memperbaiki jalan dan memastikan kualitasnya agar bisa digunakan dengan aman dan nyaman oleh warga desa. Terima kasih.', 'Rejected', 'Pengaduan Palsu', 1, '3'),
+('2023-06-20', '2023-06-19', 48, '22d438b0-b9b8-4fdf-9dbe-a', 'Arbas', 'Pelayanan', '2023-06-19', 'Pelayan Publik', 'Saya ingin mengajukan pengaduan terkait kondisi jalan desa yang rusak parah. Jalan ini merupakan akses utama bagi penduduk desa untuk beraktivitas sehari-hari, termasuk untuk mengirimkan hasil pertanian dan berangkat kerja. Namun, selama beberapa bulan terakhir, jalan ini semakin parah dan tidak layak untuk dilewati. Permukaannya berlubang-lubang besar, banyak batu yang terlepas, dan beberapa bagian jalan bahkan sudah retak. Kondisi jalan yang buruk ini mengganggu mobilitas kami dan juga membahayakan keselamatan pengguna jalan, terutama saat hujan karena jalan menjadi sangat licin. Saya berharap pemerintah desa dapat segera mengatasi masalah ini dengan memperbaiki jalan dan memastikan kualitasnya agar bisa digunakan dengan aman dan nyaman oleh warga desa. Terima kasih.', 'Completed', '', 1, '3'),
+('2023-06-20', '2023-06-19', 49, '1735a822-7013-4e2c-84ac-f', 'Arba', 'Pembangunan', '2023-06-19', 'Infrastruktur', 'Saya ingin mengajukan pengaduan terkait kondisi jalan desa yang rusak parah. Jalan ini merupakan akses utama bagi penduduk desa untuk beraktivitas sehari-hari, termasuk untuk mengirimkan hasil pertanian dan berangkat kerja. Namun, selama beberapa bulan terakhir, jalan ini semakin parah dan tidak layak untuk dilewati. Permukaannya berlubang-lubang besar, banyak batu yang terlepas, dan beberapa bagian jalan bahkan sudah retak. Kondisi jalan yang buruk ini mengganggu mobilitas kami dan juga membahayakan keselamatan pengguna jalan, terutama saat hujan karena jalan menjadi sangat licin. Saya berharap pemerintah desa dapat segera mengatasi masalah ini dengan memperbaiki jalan dan memastikan kualitasnya agar bisa digunakan dengan aman dan nyaman oleh warga desa. Terima kasih.', 'Accepted', '', 0, '3'),
+('2023-06-20', '2023-06-19', 50, 'dc729666-3c8a-45dc-8b66-4', 'Apoey', 'Lampu Gelap', '2023-06-19', 'Keamanan dan Ketertiban', 'Saya ingin mengajukan pengaduan terkait kondisi jalan desa yang rusak parah. Jalan ini merupakan akses utama bagi penduduk desa untuk beraktivitas sehari-hari, termasuk untuk mengirimkan hasil pertanian dan berangkat kerja. Namun, selama beberapa bulan terakhir, jalan ini semakin parah dan tidak layak untuk dilewati. Permukaannya berlubang-lubang besar, banyak batu yang terlepas, dan beberapa bagian jalan bahkan sudah retak. Kondisi jalan yang buruk ini mengganggu mobilitas kami dan juga membahayakan keselamatan pengguna jalan, terutama saat hujan karena jalan menjadi sangat licin. Saya berharap pemerintah desa dapat segera mengatasi masalah ini dengan memperbaiki jalan dan memastikan kualitasnya agar bisa digunakan dengan aman dan nyaman oleh warga desa. Terima kasih.', 'Rejected', 'Palsu', 0, '4'),
+('2023-06-19', '2023-06-19', 51, 'ac1cf6c0-d89a-40f4-a5fb-f', 'Arba', 'Jalan', '2023-06-19', 'Infrastruktur', 'Jalan Rusak', 'Completed', '', 2, '2'),
+('2023-06-20', '2023-06-20', 52, '4977acb2-6a8c-4918-a2f1-d', 'Poeyy', 'Pengaduan', '2023-06-20', 'Pelayan Publik', 'Saya ingin mengajukan pengaduan terkait kondisi jalan desa yang rusak parah. Jalan ini merupakan akses utama bagi penduduk desa untuk beraktivitas sehari-hari, termasuk untuk mengirimkan hasil pertanian dan berangkat kerja. Namun, selama beberapa bulan terakhir, jalan ini semakin parah dan tidak layak untuk dilewati. Permukaannya berlubang-lubang besar, banyak batu yang terlepas, dan beberapa bagian jalan bahkan sudah retak. Kondisi jalan yang buruk ini mengganggu mobilitas kami dan juga membahayakan keselamatan pengguna jalan, terutama saat hujan karena jalan menjadi sangat licin. Saya berharap pemerintah desa dapat segera mengatasi masalah ini dengan memperbaiki jalan dan memastikan kualitasnya agar bisa digunakan dengan aman dan nyaman oleh warga desa. Terima kasih.', 'Pending', '', 0, '4');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user`
+--
+
+CREATE TABLE `user` (
+  `user_id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `nik` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`user_id`, `email`, `name`, `nik`, `password`) VALUES
+(1, 'arba@gmail.com', 'arba', '3204070', 'arba123'),
+(2, 'arba', 'arba', '3204070', 'arba'),
+(3, 'arbas', 'arbas', '12345', 'arbas'),
+(4, 'apoey@gmail.com', 'apoey', '3010', 'apoey123');
 
 -- --------------------------------------------------------
 
@@ -125,6 +142,12 @@ ALTER TABLE `reporting`
   ADD PRIMARY KEY (`complaint_number`);
 
 --
+-- Indeks untuk tabel `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`user_id`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -132,13 +155,19 @@ ALTER TABLE `reporting`
 -- AUTO_INCREMENT untuk tabel `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `employee_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `employee_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `reporting`
 --
 ALTER TABLE `reporting`
-  MODIFY `complaint_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `complaint_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
+-- AUTO_INCREMENT untuk tabel `user`
+--
+ALTER TABLE `user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

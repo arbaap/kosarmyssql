@@ -36,7 +36,7 @@ function AdminPanel() {
   return (
     <Container className="tampilanadmin">
       {showAdminContent && (
-        <Tab.Container id="left-tabs-example" defaultActiveKey="laporan">
+        <Tab.Container id="left-tabs-example" defaultActiveKey="dashboard">
           <Row className="">
             <Col sm={2}>
               <Nav variant="pills" className="flex-column">

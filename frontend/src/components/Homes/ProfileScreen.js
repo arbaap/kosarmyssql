@@ -129,11 +129,11 @@ export function MyReportings() {
     switch (status) {
       case "Pending":
         return "status-pending-prof";
-      case "Diterima":
+      case "Accepted":
         return "status-diterima-prof";
-      case "Ditolak":
+      case "Rejected":
         return "status-ditolak-prof";
-      case "Selesai":
+      case "Completed":
         return "status-selesai-prof";
       default:
         return null;
@@ -156,6 +156,8 @@ export function MyReportings() {
                     marginBottom: "30px",
                     fontWeight: "bold",
                     textAlign: "center",
+                    borderBottom: "2px solid #ccc",
+                    paddingBottom: "10px",
                   }}
                 >
                   {report.complaint_title}
@@ -170,7 +172,7 @@ export function MyReportings() {
                 <Card.Text className={getStatusColor(report.work_status)}>
                   {report.work_status}
                 </Card.Text>
-                {report.work_status === "Ditolak" && (
+                {report.work_status === "Rejected" && (
                   <>
                     <Button
                       onClick={() => handleOpenModal(report)}

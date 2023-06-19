@@ -55,7 +55,7 @@ function AcceptedReportings() {
   //   }));
 
   const reportingsDiProses = reportings.filter(
-    (reporting) => reporting.work_status === "Diterima"
+    (reporting) => reporting.work_status === "Accepted"
   );
 
   const sortedreportings = reportingsDiProses.sort((a, b) => b.vote - a.vote);
