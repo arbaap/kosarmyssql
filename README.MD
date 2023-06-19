@@ -21,4 +21,4 @@ Don't forget to import the database ( https://github.com/arbaap/kosarmyssql/blob
 | 1207050016 |     Arba Adhy Pamungkas     |           Web Developer            |        [@arbaap](https://github.com/arbaap)        |
 | 1207050018 |   Arief Roihan Nur Rahman   | Back End Developer/Project Manager | [@ariefroihannurrahman](https://github.com/ariefroihannurrahman)  |
 | 1207050020 |       Ayuni Tia Sari        |             Sekretaris             | [@ayunitiasarii](https://github.com/ayunitiasarii) |
-| 1207050020 | Azmi Aldi Syahrial Ramadhan |           Web Developer            |    [@azmialdi67](https://github.com/azmialdi67)    |
+| 1207050021 | Azmi Aldi Syahrial Ramadhan |           Web Developer            |    [@azmialdi67](https://github.com/azmialdi67)    |
