@@ -10,7 +10,7 @@ const WelcomeScreen = () => {
           <img src={logo} alt="Logo" className="logo" />
         </div>
         <h2>Welcome To</h2>
-        <h1>Sistem Informasi Pengaduan Masyarakat </h1>
+        <h1>Public Complaint Information System</h1>
         <h1>Kosar Village</h1>
         <h2 className="msk">Login as</h2>
         <div className="button-container">

@@ -31,7 +31,7 @@ const NavbarUser = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="/home">
+        <Navbar.Brand href="/">
           <img className="img-logo" src={logo} alt="" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

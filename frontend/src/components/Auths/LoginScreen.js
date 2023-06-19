@@ -5,8 +5,10 @@ import Swal from "sweetalert2";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
-import Card from "react-bootstrap/Card";
 import logo from "../../assets/subang.png";
+
+import { IoArrowBackOutline } from "react-icons/io5";
+import { Container, Row, Col, Card } from "react-bootstrap";
 
 function LoginScreen() {
   const [username, setUsername] = useState("");
@@ -78,18 +80,26 @@ function LoginScreen() {
   }
 
   return (
-    <div className="container">
-      <div className="row justify-content-center mt-5">
-        <div className="col">
+    <Container className="container">
+      <div className="header">
+        <div className="backbutton">
+          <Link to="/home">
+            <IoArrowBackOutline size={30} color="white" />
+          </Link>
+        </div>
+      </div>
+      <Row className="justify-content-center mt-5">
+        <Col className="col">
           <Card className="cardmodal">
             <Card.Body>
               <Card.Title className="text-center">
                 <img className="img-logo" src={logo} alt="" />
                 <h2>Welcome to</h2>
-                <h1>Sistem Informasi Pengaduan Masyarakat Desa Kosar</h1>
+                <h1>Public Complaint Information System</h1>
+                <h1>Kosar Village</h1>
               </Card.Title>
               <Card.Text>
-                <h2 className="judullogin">Login</h2>
+                <h2 className="judullogin">Login Admin</h2>
                 <input
                   type="text"
                   className="form-control"
@@ -115,8 +125,8 @@ function LoginScreen() {
               </Card.Text>
             </Card.Body>
           </Card>
-        </div>
-      </div>
+        </Col>
+      </Row>
 
       {/* Verification Modal */}
       <Modal show={showModal} onHide={() => setShowModal(false)}>
@@ -142,7 +152,7 @@ function LoginScreen() {
           </Button>
         </Modal.Footer>
       </Modal>
-    </div>
+    </Container>
   );
 }
 

@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Row, Col, Button, Table } from "react-bootstrap";
+import { Row, Col, Button, Table, Modal } from "react-bootstrap";
 import Swal from "sweetalert2";
 
 function AdminReport() {
   const [reportings, setReportings] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(5);
+  const [selectedReport, setSelectedReport] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -85,6 +86,14 @@ function AdminReport() {
     setCurrentPage(pageNumber);
   };
 
+  const openDescriptionModal = (report) => {
+    setSelectedReport(report);
+  };
+
+  const closeDescriptionModal = () => {
+    setSelectedReport(null);
+  };
+
   const filteredReportings = reportings.filter(
     (reporting) => reporting.work_status === "Pending"
   );
@@ -98,19 +107,19 @@ function AdminReport() {
 
   return (
     <Row>
-      <Col md={12}>
+      <Col>
         <h1>Incoming Report</h1>
 
         <Table bordered>
           <thead>
             <tr>
               <th>No</th>
-              <th>Nama</th>
-              <th>Kategori Pengaduan</th>
-              <th>Judul Pengaduan</th>
-              <th>Isi Pengaduan</th>
-              <th>Tanggal</th>
-              <th>Aksi</th>
+              <th>Name</th>
+              <th>Complaint Category</th>
+              <th>Complaint Title</th>
+              <th>Description</th>
+              <th>Date</th>
+              <th>Action</th>
             </tr>
           </thead>
 
@@ -123,7 +132,20 @@ function AdminReport() {
                   <td>{reporting.complaint_category}</td>
                   <td>{reporting.complaint_title}</td>
                   <td style={{ width: "200px", wordBreak: "break-word" }}>
-                    {reporting.description}
+                    {reporting.description.length > 20 ? (
+                      <>
+                        {reporting.description.slice(0, 30)}...
+                        <Button
+                          variant="link"
+                          className="p-0 ml-1"
+                          onClick={() => openDescriptionModal(reporting)}
+                        >
+                          View Description
+                        </Button>
+                      </>
+                    ) : (
+                      reporting.description
+                    )}
                   </td>
 
                   <td>
@@ -141,7 +163,7 @@ function AdminReport() {
                           terimareporting(reporting.complaint_id, "Diterima")
                         }
                       >
-                        Terima
+                        Accept
                       </Button>
                     )}
                     {reporting.work_status !== "pending" && (
@@ -152,7 +174,7 @@ function AdminReport() {
                           tolakreporting(reporting.complaint_id, "Ditolak")
                         }
                       >
-                        Tolak
+                        Reject
                       </Button>
                     )}
                   </td>
@@ -172,6 +194,21 @@ function AdminReport() {
           totalItems={filteredReportings.length}
           onPageChange={handlePageChange}
         />
+
+        {/* Modal untuk menampilkan deskripsi penuh */}
+        <Modal show={selectedReport !== null} onHide={closeDescriptionModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>Deskripsi Laporan</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {selectedReport && selectedReport.description}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={closeDescriptionModal}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Col>
     </Row>
   );

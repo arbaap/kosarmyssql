@@ -38,7 +38,7 @@ function AdminPanel() {
       {showAdminContent && (
         <Tab.Container id="left-tabs-example" defaultActiveKey="laporan">
           <Row className="">
-            <Col sm={3}>
+            <Col sm={2}>
               <Nav variant="pills" className="flex-column">
                 <h2>
                   <b>Admin Panel</b>
@@ -47,11 +47,11 @@ function AdminPanel() {
                   <Nav.Link eventKey="dashboard">Dashboard</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="laporan">Laporan</Nav.Link>
+                  <Nav.Link eventKey="laporan">Reportings</Nav.Link>
                 </Nav.Item>
               </Nav>
             </Col>
-            <Col sm={9}>
+            <Col sm={10}>
               <Tab.Content>
                 <Tab.Pane eventKey="dashboard">
                   <AdminDashboard />

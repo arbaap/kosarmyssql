@@ -5,15 +5,15 @@ import Swal from "sweetalert2";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
-import Card from "react-bootstrap/Card";
 import logo from "../../../assets/subang.png";
+
+import { IoArrowBackOutline } from "react-icons/io5";
+import { Container, Row, Col, Card } from "react-bootstrap";
 
 function LoginUser() {
   const [nik, setNik] = useState("");
   const [password, setPassword] = useState("");
 
-
-  
   async function login() {
     const credentials = {
       nik,
@@ -50,15 +50,23 @@ function LoginUser() {
   }
 
   return (
-    <div className="container">
-      <div className="row justify-content-center mt-5">
-        <div className="col">
+    <Container className="container">
+      <div className="header">
+        <div className="backbutton">
+          <Link to="/home">
+            <IoArrowBackOutline size={30} color="white" />
+          </Link>
+        </div>
+      </div>
+      <Row className="justify-content-center mt-5">
+        <Col className="col">
           <Card className="cardmodal">
             <Card.Body>
               <Card.Title className="text-center">
                 <img className="img-logo" src={logo} alt="" />
                 <h2>Welcome to</h2>
-                <h1>Sistem Informasi Pengaduan Masyarakat Desa Kosar</h1>
+                <h1>Public Complaint Information System</h1>
+                <h1>Kosar Village</h1>
               </Card.Title>
               <Card.Text>
                 <h2 className="judullogin">Login Villagers</h2>
@@ -87,9 +95,9 @@ function LoginUser() {
               </Card.Text>
             </Card.Body>
           </Card>
-        </div>
-      </div>
-    </div>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

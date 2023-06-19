@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, Link } from "react-router-dom";
-import { Container, Row, Col, Tab, Nav, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import {
+  Container,
+  Row,
+  Col,
+  Tab,
+  Nav,
+  Card,
+  Modal,
+  Button,
+} from "react-bootstrap";
 import { IoArrowBackOutline } from "react-icons/io5";
 
 function ProfileScreen() {
@@ -65,7 +74,7 @@ function ProfileScreen() {
                 </Tab.Pane>
                 <Tab.Pane eventKey="history">
                   <Container>
-                    <MyBookings />
+                    <MyReportings />
                   </Container>
                 </Tab.Pane>
               </Tab.Content>
@@ -79,10 +88,22 @@ function ProfileScreen() {
 
 export default ProfileScreen;
 
-export function MyBookings() {
+export function MyReportings() {
   const [reportingData, setReportingData] = useState([]);
   const userData = JSON.parse(sessionStorage.getItem("villagers"));
   const userId = userData ? userData.user_id : null;
+
+  const [showModal, setShowModal] = useState(false);
+  const [selectedReport, setSelectedReport] = useState(null);
+
+  const handleModal = () => {
+    setShowModal(!showModal);
+  };
+
+  const handleOpenModal = (report) => {
+    setSelectedReport(report);
+    setShowModal(true);
+  };
 
   useEffect(() => {
     if (userId) {
@@ -123,36 +144,66 @@ export function MyBookings() {
     <Container>
       <Card>
         <Card.Body>
-          <Card.Title style={{ fontWeight: "bold" }}>Reporting Data</Card.Title>
+          <Card.Title style={{ fontWeight: "bold" }}>
+            Reporting History
+          </Card.Title>
+          {reportingData.map((report) => (
+            <Card key={report.complaint_id} className="my-3">
+              <Card.Body>
+                <Card.Title
+                  className="myprf"
+                  style={{
+                    marginBottom: "30px",
+                    fontWeight: "bold",
+                    textAlign: "center",
+                  }}
+                >
+                  {report.complaint_title}
+                </Card.Title>
+                <Card.Title className="myprf">Name</Card.Title>
+                <Card.Text>{report.complainants_name}</Card.Text>
+                <Card.Title className="myprf">Category</Card.Title>
+                <Card.Text>{report.complaint_category}</Card.Text>
+                <Card.Title className="myprf">Description</Card.Title>
+                <Card.Text>{report.description}</Card.Text>
+                <Card.Title className="myprf">Work Status</Card.Title>
+                <Card.Text className={getStatusColor(report.work_status)}>
+                  {report.work_status}
+                </Card.Text>
+                {report.work_status === "Ditolak" && (
+                  <>
+                    <Button
+                      onClick={() => handleOpenModal(report)}
+                      className="alasanpenolakan w-50 m-auto d-flex justify-content-center"
+                      style={{
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      Lihat Alasan Penolakan
+                    </Button>
+
+                    <Modal show={showModal} onHide={handleModal}>
+                      <Modal.Header closeButton>
+                        <Modal.Title>Alasan Penolakan</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        {selectedReport && selectedReport.reason}
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button variant="secondary" onClick={handleModal}>
+                          Tutup
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </>
+                )}
+              </Card.Body>
+            </Card>
+          ))}
         </Card.Body>
       </Card>
-
-      {reportingData.map((report) => (
-        <Card key={report.complaint_id} className="my-3">
-          <Card.Body>
-            <Card.Title
-              className="myprf"
-              style={{
-                marginBottom: "30px",
-                fontWeight: "bold",
-                textAlign: "center",
-              }}
-            >
-              {report.complaint_title}
-            </Card.Title>
-            <Card.Title className="myprf">Complainants Name</Card.Title>
-            <Card.Text>{report.complainants_name}</Card.Text>
-            <Card.Title className="myprf">Complaint Category</Card.Title>
-            <Card.Text>{report.complaint_category}</Card.Text>
-            <Card.Title className="myprf">Description</Card.Title>
-            <Card.Text>{report.description}</Card.Text>
-            <Card.Title className="myprf">Work Status</Card.Title>
-            <Card.Text className={getStatusColor(report.work_status)}>
-              {report.work_status}
-            </Card.Text>
-          </Card.Body>
-        </Card>
-      ))}
     </Container>
   );
 }

@@ -65,11 +65,11 @@ function AdminReportings() {
           <thead>
             <tr>
               <th>No</th>
-              <th>Nama Warga</th>
-              <th>Judul Pengaduan</th>
-              <th>Alasan Ditolak</th>
+              <th>Villagers Name</th>
+              <th>Complaint Title</th>
+              <th>Reason Rejected</th>
               <th>Status</th>
-              <th>Aksi</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -105,11 +105,13 @@ function AdminReportings() {
                     {reporting.work_status !== "Selesai" &&
                       reporting.work_status !== "Ditolak" && (
                         <Button
+                          variant="info"
+                          className="btn-action"
                           onClick={() =>
                             selesaireporting(reporting.complaint_id, "Selesai")
                           }
                         >
-                          Selesai
+                          Completed
                         </Button>
                       )}
                   </td>

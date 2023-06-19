@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+import { IoArrowBackOutline } from "react-icons/io5";
+import { Container, Row, Col, Card } from "react-bootstrap";
 
+import logo from "../../../assets/subang.png";
 function RegisterUser() {
   const [nik, setNIK] = useState("");
   const [name, setName] = useState("");
@@ -18,14 +22,10 @@ function RegisterUser() {
 
     try {
       const response = await axios.post("/user/reg", villagers);
-      console.log(response.data); // Menampilkan respon dari server
-
-      // Lakukan tindakan sesuai dengan respon dari server
+      console.log(response.data);
       if (response.status === 200) {
         Swal.fire("Congrats", "Villagers Created Successfully", "success").then(
           (result) => {
-            // Lakukan tindakan lain setelah berhasil membuat karyawan...
-            // Contoh: Pindah ke halaman lain atau tampilkan notifikasi lainnya
             window.location.href = "/loguser";
           }
         );
@@ -39,55 +39,72 @@ function RegisterUser() {
   }
 
   return (
-    <div>
-      <div className="row justify-content-center mt-5">
-        <div className="col-md-5 mt-5">
-          <div className="bs">
-            <h2>Register Villagers</h2>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="NIK"
-              value={nik}
-              onChange={(e) => {
-                setNIK(e.target.value);
-              }}
-            />
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Name"
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-
-            <button className="btn btn-primary mt-3" onClick={register}>
-              Register
-            </button>
-          </div>
+    <Container className="container">
+      <div className="header">
+        <div className="backbutton">
+          <Link to="/home">
+            <IoArrowBackOutline size={30} color="white" />
+          </Link>
         </div>
       </div>
-    </div>
+      <Row className="justify-content-center mt-5 mb-5">
+        <Col className="col">
+          <Card className="cardmodal">
+            <Card.Body>
+              <Card.Title className="text-center">
+                <img className="img-logo" src={logo} alt="" />
+                <h2>Welcome to</h2>
+                <h1>Public Complaint Information System</h1>
+                <h1>Kosar Village</h1>
+              </Card.Title>
+              <Card.Text>
+                {" "}
+                <h2>Villagers</h2>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="NIK"
+                  value={nik}
+                  onChange={(e) => {
+                    setNIK(e.target.value);
+                  }}
+                />
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                />
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
+                <input
+                  type="password"
+                  className="form-control"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
+                <button className="btn btn-primary mt-3" onClick={register}>
+                  Register
+                </button>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

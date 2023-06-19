@@ -212,7 +212,8 @@ b {
 }
 
 .terimareporting,
-.tolakreporting {
+.tolakreporting,
+.btn-action {
   color: white;
   border: none;
   border-radius: 10px 15px 10px 20px;
@@ -238,14 +239,15 @@ b {
 /* home */
 
 .judul {
-  margin-top: 40px;
   font-weight: bold;
   color: white;
+  text-align: center;
 }
 
 .judul2 {
   color: white;
   font-size: 20px;
+  text-align: center;
 }
 
 .form-control {
@@ -302,6 +304,11 @@ b {
 
 .inic {
   margin-top: 10vh;
+  margin-bottom: 15vh;
+}
+
+.homes {
+  margin-top: 5vh;
   margin-bottom: 15vh;
 }
 
@@ -401,4 +408,18 @@ b {
 
 .myprf {
   margin-top: 20px;
+  font-weight: bold;
+}
+
+.btn-action,
+.terimareporting,
+.tolakreporting {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
+
+.tabels {
+  text-align: center;
 }

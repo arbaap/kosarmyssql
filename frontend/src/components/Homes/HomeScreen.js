@@ -8,43 +8,41 @@ import RejectedReportings from "../Reportings/RejectedReportings";
 
 function HomeScreen() {
   return (
-    <Container className="inic container">
-      <div className="inic container">
-        <h1 className="judul">Welcome to</h1>
-        <h2 className="judul2">
-          Sistem Informasi Pengaduan <br></br>Masyarakat Desa Kosar
-        </h2>
+    <Container className="homes">
+      <h1 className="judul">Welcome to</h1>
+      <h2 className="judul2">
+        Public Complaint Information System <br></br> Kosar Village
+      </h2>
 
-        <div className="tampilanhome">
-          <h2 className="text-center">
-            <b>Complaint List</b>
-          </h2>
-          <Tabs
-            defaultActiveKey="reportingterbaru"
-            id="justify-tab-example"
-            className="mb-3"
-            justify
-          >
-            <Tab eventKey="reportingterbaru" title="Latest">
-              <LatestReportings />
-            </Tab>
-            <Tab eventKey="reportingdiproses" title="Processed">
-              <AcceptedReportings />
-            </Tab>
-            <Tab eventKey="reportingselesai" title="Resolved">
-              <FinishedReportings />
-            </Tab>
-            <Tab eventKey="reportingditolak" title="Rejected">
-              <RejectedReportings />
-            </Tab>
-          </Tabs>
-          <div className="fixed-bottom w-50 m-auto">
-            <Link to="/tambahkeluhan" className="btn pengaduan btn-block">
-              Create Reporting
-            </Link>
-          </div>
+      <Container className="tampilanhome">
+        <h2 className="text-center">
+          <b>Complaint List</b>
+        </h2>
+        <Tabs
+          defaultActiveKey="latestreporting"
+          id="justify-tab-example"
+          className="mb-3"
+          justify
+        >
+          <Tab eventKey="latestreporting" title="Latest">
+            <LatestReportings />
+          </Tab>
+          <Tab eventKey="processedreporting" title="Processed">
+            <AcceptedReportings />
+          </Tab>
+          <Tab eventKey="completedreporting" title="Resolved">
+            <FinishedReportings />
+          </Tab>
+          <Tab eventKey="rejectedreporting" title="Rejected">
+            <RejectedReportings />
+          </Tab>
+        </Tabs>
+        <div className="fixed-bottom w-50 m-auto">
+          <Link to="/tambahkeluhan" className="btn pengaduan btn-block">
+            Create Reporting
+          </Link>
         </div>
-      </div>
+      </Container>
     </Container>
   );
 }
