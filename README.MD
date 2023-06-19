@@ -15,7 +15,7 @@ Don't forget to import the database ( https://github.com/arbaap/kosarmyssql/blob
 
 #### Team Member:
 
-| Nim |           Member            |                Path                |                       GitHub                       |
+| Nim |           Member            |                Group Stucture                |                       GitHub                       |
 | :--------: | :-------------------------: | :--------------------------------: | :------------------------------------------------: |
 | 1207050005 |       Agus Tri Adiana       |          UI/UX Developer           |     [@AgusTri43](https://github.com/AgusTri43)     |
 | 1207050016 |     Arba Adhy Pamungkas     |           Web Developer            |        [@arbaap](https://github.com/arbaap)        |
