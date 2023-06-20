@@ -37,7 +37,6 @@ function CreateReporting() {
     setShowCreateReportContent(true);
   }, []);
 
-  // const [complainants_name, setcomplainants_name] = useState();
   const [complaint_category, setcomplaint_category] = useState("");
   const [complaint_title, setcomplaint_title] = useState();
   const [description, setdescription] = useState();
