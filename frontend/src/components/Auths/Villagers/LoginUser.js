@@ -30,13 +30,31 @@ function LoginUser() {
             nik,
             email: response.data.email,
             name: response.data.name,
+            account_state: response.data.account_state,
           };
 
           sessionStorage.setItem("villagers", JSON.stringify(userData));
           console.log(userData);
-          Swal.fire("Success", "Login Successful", "success").then((result) => {
-            window.location.href = "/home";
-          });
+
+          if (userData.account_state === "Verified") {
+            Swal.fire("Success", "Login Successful", "success").then(
+              (result) => {
+                window.location.href = "/home";
+              }
+            );
+          } else if (userData.account_state === "Unverified") {
+            Swal.fire(
+              "Oops",
+              "You are not a resident of Kosar Village. You do not have permission to access this page..",
+              "error"
+            );
+          } else if (userData.account_state === "Pending") {
+            Swal.fire(
+              "Oops",
+              "Your account is pending approval. You do not have permission to access this page..",
+              "warning"
+            );
+          }
         } else {
           Swal.fire("Oops", "Invalid credentials", "error");
         }
@@ -69,7 +87,7 @@ function LoginUser() {
                 <h1>Kosar Village</h1>
               </Card.Title>
               <Card.Text>
-                <h2 className="judullogin">Login Villagers</h2>
+                <h2 className="login_title">Login Villagers</h2>
                 <input
                   type="text"
                   className="form-control"

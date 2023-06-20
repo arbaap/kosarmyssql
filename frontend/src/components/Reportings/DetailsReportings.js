@@ -35,20 +35,20 @@ function DetailsReporting({ match }) {
   if (reportings && reportings.work_status) {
     switch (reportings.work_status) {
       case "Pending":
-        statusClass = "status-pending";
+        statusClass = "pending-status";
         break;
       case "Accepted":
-        statusClass = "status-diterima";
+        statusClass = "accepted-status";
         backgroundColor = "#fec400";
         textColor = "white";
         break;
       case "Rejected":
-        statusClass = "status-ditolak";
+        statusClass = "rejected-status";
         backgroundColor = "#f12b2c";
         textColor = "white";
         break;
       case "Completed":
-        statusClass = "status-selesai";
+        statusClass = "completed-status";
         backgroundColor = "#14bd96";
         textColor = "white";
         break;

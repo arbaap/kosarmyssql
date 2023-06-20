@@ -22,7 +22,7 @@ function AdminReport() {
     }
   };
 
-  const terimareporting = (id, newStatus) => {
+  const acceptedReporting = (id, newStatus) => {
     axios
       .put(`/u/rep?id=${id}`, { work_status: newStatus })
       .then((response) => {
@@ -47,7 +47,7 @@ function AdminReport() {
       });
   };
 
-  const tolakreporting = (id, newStatus) => {
+  const rejectedReporting = (id, newStatus) => {
     Swal.fire({
       title: "Reasons for Rejection",
       input: "textarea",
@@ -158,9 +158,9 @@ function AdminReport() {
                   <td>
                     {reporting.work_status !== "pending" && (
                       <Button
-                        className="terimareporting"
+                        className="btn_accepted"
                         onClick={() =>
-                          terimareporting(reporting.complaint_id, "Accepted")
+                          acceptedReporting(reporting.complaint_id, "Accepted")
                         }
                       >
                         Accept
@@ -169,9 +169,9 @@ function AdminReport() {
                     {reporting.work_status !== "pending" && (
                       <Button
                         variant="danger"
-                        className="tolakreporting"
+                        className="btn_rejected"
                         onClick={() =>
-                          tolakreporting(reporting.complaint_id, "Rejected")
+                          rejectedReporting(reporting.complaint_id, "Rejected")
                         }
                       >
                         Reject
@@ -182,7 +182,7 @@ function AdminReport() {
               ))
             ) : (
               <tr>
-                <td colSpan="8">Tidak ada laporan yang tersedia.</td>
+                <td colSpan="8">No reports available.</td>
               </tr>
             )}
           </tbody>
@@ -197,7 +197,7 @@ function AdminReport() {
 
         <Modal show={selectedReport !== null} onHide={closeDescriptionModal}>
           <Modal.Header closeButton>
-            <Modal.Title>Deskripsi Laporan</Modal.Title>
+            <Modal.Title>Report Description</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {selectedReport && selectedReport.description}

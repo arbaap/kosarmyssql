@@ -126,23 +126,23 @@ h1 {
   margin-top: 5px;
 }
 
-.laporanmasuk {
+.incoming_report {
   background-color: #02a0fc;
 }
 
-.laporanditerima {
+.reportings_accepted {
   background-color: #fec400;
 }
 
-.laporanditolak {
+.reportings_rejected {
   background-color: #f12b2c;
 }
 
-.laporanselesai {
+.reportings_completed {
   background-color: #14bd96;
 }
 
-.laporanpending {
+.reportings_pending {
   background-color: #696969;
 }
 
@@ -220,7 +220,7 @@ b {
   border: none;
 }
 
-.sudahvote {
+.vote_done {
   color: #14bd96;
   border: none;
 }
@@ -233,7 +233,7 @@ b {
   background-color: #f12b2c;
 }
 
-.judullogin {
+.login_title {
   color: #10bca0;
 }
 
@@ -246,8 +246,8 @@ b {
   margin-top: 20px;
 }
 
-.terimareporting,
-.tolakreporting,
+.btn_accepted,
+.btn_rejected,
 .btn-action {
   color: white;
   border: none;
@@ -257,11 +257,11 @@ b {
   margin-top: 2vh;
 }
 
-.terimareporting {
+.btn_accepted {
   background-color: #14bd96;
 }
 
-.tolakreporting {
+.btn_rejected {
   background-color: #f12b2c;
 }
 
@@ -347,42 +347,46 @@ b {
   margin-bottom: 15vh;
 }
 
-.status-pending {
+.pending-status {
   color: #9932cc;
+  font-weight: bold;
 }
 
-.status-diterima {
+.accepted-status {
   color: #fec400;
+  font-weight: bold;
 }
 
-.status-ditolak {
+.rejected-status {
   color: #f12b2c;
+  font-weight: bold;
 }
 
-.status-selesai {
+.completed-status {
   color: #14bd96;
+  font-weight: bold;
 }
 
-.status-pending-prof {
+.pending-status-prof {
   background-color: #9932cc;
 }
 
-.status-diterima-prof {
+.accepted-status-prof {
   background-color: #fec400;
 }
 
-.status-ditolak-prof {
+.rejected-status-prof {
   background-color: #f12b2c;
 }
 
-.status-selesai-prof {
+.completed-status-prof {
   background-color: #14bd96;
 }
 
-.status-diterima-prof,
-.status-ditolak-prof,
-.status-pending-prof,
-.status-selesai-prof {
+.accepted-status-prof,
+.rejected-status-prof,
+.pending-status-prof,
+.completed-status-prof {
   padding: 5px;
   border-radius: 5px;
   color: white;
@@ -447,8 +451,8 @@ b {
 }
 
 .btn-action,
-.terimareporting,
-.tolakreporting {
+.btn_accepted,
+.btn_rejected {
   width: 100%;
   padding-left: 0;
   padding-right: 0;

@@ -42,13 +42,13 @@ function ModalReporting({ reporting, index }) {
       return null;
     case "Accepted":
       statusText = "Processed";
-      statusClass = "status-diterima";
+      statusClass = "accepted-status";
       break;
     case "Rejected":
-      statusClass = "status-ditolak";
+      statusClass = "rejected-status";
       break;
     case "Completed":
-      statusClass = "status-selesai";
+      statusClass = "completed-status";
       break;
     default:
       break;
@@ -62,7 +62,7 @@ function ModalReporting({ reporting, index }) {
             <Card.Title>
               {hasVoted ? (
                 <button className="btnvoteup">
-                  <BsTriangleFill className="sudahvote" size={30} />
+                  <BsTriangleFill className="vote_done" size={30} />
                 </button>
               ) : (
                 <button className="btnvoteup" onClick={handleVote}>

@@ -128,13 +128,13 @@ export function MyReportings() {
   const getStatusColor = (status) => {
     switch (status) {
       case "Pending":
-        return "status-pending-prof";
+        return "pending-status-prof";
       case "Accepted":
-        return "status-diterima-prof";
+        return "accepted-status-prof";
       case "Rejected":
-        return "status-ditolak-prof";
+        return "rejected-status-prof";
       case "Completed":
-        return "status-selesai-prof";
+        return "completed-status-prof";
       default:
         return null;
     }

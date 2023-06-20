@@ -3,9 +3,10 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { IoArrowBackOutline } from "react-icons/io5";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
 
 import logo from "../../../assets/subang.png";
+
 function RegisterUser() {
   const [nik, setNIK] = useState("");
   const [name, setName] = useState("");
@@ -15,13 +16,16 @@ function RegisterUser() {
   async function register() {
     const villagers = {
       nik,
-      name,
       email,
+      name,
       password,
+      account_state: "Pending",
     };
 
+    console.log(villagers);
     try {
       const response = await axios.post("/user/reg", villagers);
+      console.log(response);
       console.log(response.data);
       if (response.status === 200) {
         Swal.fire("Congrats", "Villagers Created Successfully", "success").then(
@@ -37,6 +41,15 @@ function RegisterUser() {
       console.log(error);
     }
   }
+
+  const isFormValid = () => {
+    return nik !== "" && email !== "" && name !== "" && password !== "";
+  };
+
+  const isEmailValid = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   return (
     <Container className="container">
@@ -58,7 +71,6 @@ function RegisterUser() {
                 <h1>Kosar Village</h1>
               </Card.Title>
               <Card.Text>
-                {" "}
                 <h2>Villagers</h2>
                 <input
                   type="text"
@@ -87,6 +99,11 @@ function RegisterUser() {
                     setEmail(e.target.value);
                   }}
                 />
+                {!isEmailValid() && (
+                  <p className="text-danger">
+                    Please enter a valid Gmail address
+                  </p>
+                )}
                 <input
                   type="password"
                   className="form-control"
@@ -96,9 +113,13 @@ function RegisterUser() {
                     setPassword(e.target.value);
                   }}
                 />
-                <button className="btn btn-primary mt-3" onClick={register}>
+                <Button
+                  className="btn btn-primary mt-3"
+                  onClick={register}
+                  disabled={!isFormValid() || !isEmailValid()}
+                >
                   Register
-                </button>
+                </Button>
               </Card.Text>
             </Card.Body>
           </Card>

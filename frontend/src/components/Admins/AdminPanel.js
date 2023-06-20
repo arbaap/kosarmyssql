@@ -5,6 +5,8 @@ import AdminDashboard from "./AdminDashboard";
 import AdminReportings from "./AdminReportings";
 import AdminReport from "./AdminReport";
 import Swal from "sweetalert2";
+import AdminUser from "./AdminUser";
+import AdminAllUsers from "./AdminAllUsers";
 
 function AdminPanel() {
   const [showAdminContent, setShowAdminContent] = useState(false);
@@ -36,7 +38,7 @@ function AdminPanel() {
   return (
     <Container className="tampilanadmin">
       {showAdminContent && (
-        <Tab.Container id="left-tabs-example" defaultActiveKey="dashboard">
+        <Tab.Container id="left-tabs-example" defaultActiveKey="villagers">
           <Row className="">
             <Col sm={2}>
               <Nav variant="pills" className="flex-column">
@@ -49,6 +51,9 @@ function AdminPanel() {
                 <Nav.Item>
                   <Nav.Link eventKey="laporan">Reportings</Nav.Link>
                 </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="villagers">Villagers</Nav.Link>
+                </Nav.Item>
               </Nav>
             </Col>
             <Col sm={10}>
@@ -59,6 +64,10 @@ function AdminPanel() {
                 <Tab.Pane eventKey="laporan">
                   <AdminReportings />
                   <AdminReport />
+                </Tab.Pane>
+                <Tab.Pane eventKey="villagers">
+                  <AdminAllUsers />
+                  <AdminUser />
                 </Tab.Pane>
               </Tab.Content>
             </Col>

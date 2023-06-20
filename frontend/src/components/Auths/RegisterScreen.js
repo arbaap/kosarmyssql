@@ -3,7 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { IoArrowBackOutline } from "react-icons/io5";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import logo from "../../assets/subang.png";
 
 function RegisterScreen() {
@@ -41,6 +41,19 @@ function RegisterScreen() {
       console.log(error);
     }
   }
+
+  const isFormValid = () => {
+    return (
+      name !== "" &&
+      nip !== "" &&
+      position !== "" &&
+      status !== "" &&
+      username !== "" &&
+      password !== ""
+    );
+  };
+
+  
 
   return (
     <Container className="container">
@@ -125,9 +138,13 @@ function RegisterScreen() {
                   </Col>
                 </Row>
 
-                <button className="btn btn-primary mt-3" onClick={register}>
+                <Button
+                  className="btn btn-primary mt-3"
+                  onClick={register}
+                  disabled={!isFormValid()}
+                >
                   Register
-                </button>
+                </Button>
               </Card.Text>
             </Card.Body>
           </Card>

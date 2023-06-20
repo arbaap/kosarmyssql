@@ -132,23 +132,23 @@ function AdminDashboard() {
   return (
     <div className="dashboard-container">
       <h1>Dashboard</h1>
-      <div className="laporanmasuk dashboard-box-incoming">
+      <div className="incoming_report dashboard-box-incoming">
         <p>Incoming Reports</p>
         <p className="angkas">{totalAmountReportings}</p>
       </div>
-      <div className="laporanditerima dashboard-box">
+      <div className="reportings_accepted dashboard-box">
         <p>Processed</p>
         <p className="angkas">{totalAmountReportingsAccepted}</p>
       </div>
-      <div className="laporanselesai dashboard-box">
+      <div className="reportings_completed dashboard-box">
         <p>Completed</p>
         <p className="angkas">{totalAmountReportingsCompleted}</p>
       </div>
-      <div className="laporanditolak dashboard-box">
+      <div className="reportings_rejected dashboard-box">
         <p>Rejected</p>
         <p className="angkas">{totalAmountReportingsRejected}</p>
       </div>
-      <div className="laporanpending dashboard-box">
+      <div className="reportings_pending dashboard-box">
         <p>Pending</p>
         <p className="angkas">{totalAmountReportingsPending}</p>
       </div>

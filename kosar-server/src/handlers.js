@@ -379,7 +379,7 @@ const loginUser = (request, reply) => {
 
       if (results.length > 0) {
         console.log(date + " : Request POST Login User success code 200");
-        const { user_id, email, name } = results[0];
+        const { user_id, email, name, account_state } = results[0];
         resolve({
           status: "Success",
           code: 200,
@@ -387,6 +387,7 @@ const loginUser = (request, reply) => {
           user_id,
           email,
           name,
+          account_state,
         });
       } else {
         console.log(date + " : Request POST Login User failed code 401");
@@ -396,6 +397,23 @@ const loginUser = (request, reply) => {
           message: "Invalid nik or password",
         });
       }
+    });
+  });
+};
+
+const updateUser = (request, reply) => {
+  const { id } = request.query;
+  const update = request.payload;
+
+  return new Promise((resolve, reject) => {
+    userModel.updateUser(id, update, (error, results) => {
+      if (error) reject(error);
+      console.log(date + " : Request PUT Reporting success code 201");
+      resolve({
+        status: "Success",
+        code: 201,
+        data: results,
+      });
     });
   });
 };
@@ -452,4 +470,5 @@ export {
   loginUser,
   getUsersByUserId,
   getReportingByUserId,
+  updateUser,
 };

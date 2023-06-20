@@ -99,7 +99,7 @@ function LoginScreen() {
                 <h1>Kosar Village</h1>
               </Card.Title>
               <Card.Text>
-                <h2 className="judullogin">Login Admin</h2>
+                <h2 className="login_title">Login Admin</h2>
                 <input
                   type="text"
                   className="form-control"

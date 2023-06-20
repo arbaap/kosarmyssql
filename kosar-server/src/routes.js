@@ -105,6 +105,11 @@ const routes = [
     method: "GET",
     handler: handler.getReportingByUserId,
   },
+  {
+    path: "/u/user",
+    method: "PUT",
+    handler: handler.updateUser,
+  },
 ];
 
 export default routes;

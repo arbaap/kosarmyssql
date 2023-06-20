@@ -81,13 +81,13 @@ function AdminReportings() {
                   return null;
                 case "Accepted":
                   statusText = "Processed";
-                  statusClass = "status-diterima";
+                  statusClass = "accepted-status";
                   break;
                 case "Rejected":
-                  statusClass = "status-ditolak";
+                  statusClass = "rejected-status";
                   break;
                 case "Completed":
-                  statusClass = "status-selesai";
+                  statusClass = "completed-status";
                   break;
                 default:
                   break;
