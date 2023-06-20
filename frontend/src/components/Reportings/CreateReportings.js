@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 function CreateReporting() {
   const [showCreateReportContent, setShowCreateReportContent] = useState(false);
   const [userId, setUserId] = useState("");
+  const [userName, setUserName] = useState("");
 
   useEffect(() => {
     const storedUser = sessionStorage.getItem("villagers");
@@ -32,17 +33,18 @@ function CreateReporting() {
     }
     const userData = JSON.parse(storedUser);
     setUserId(userData.user_id);
+    setUserName(userData.name);
     setShowCreateReportContent(true);
   }, []);
 
-  const [complainants_name, setcomplainants_name] = useState();
+  // const [complainants_name, setcomplainants_name] = useState();
   const [complaint_category, setcomplaint_category] = useState("");
   const [complaint_title, setcomplaint_title] = useState();
   const [description, setdescription] = useState();
 
-  async function addKeluhan() {
+  async function addComplaint() {
     const newreporting = {
-      complainants_name,
+      complainants_name: userName,
       complaint_category,
       complaint_title,
       description,
@@ -52,12 +54,7 @@ function CreateReporting() {
 
     console.log(newreporting);
 
-    if (
-      !complainants_name ||
-      !complaint_category ||
-      !complaint_title ||
-      !description
-    ) {
+    if (!complaint_category || !complaint_title || !description) {
       Swal.fire("Oops", "Please fill in all inputs", "error");
       return;
     }
@@ -91,15 +88,16 @@ function CreateReporting() {
               </Link>
             </div>
             <div className="jdltambahkeluhan">
-              <h1>Form Pengaduan</h1>
+              <h1>Complaint Form</h1>
             </div>
           </div>
           <div className="subjudul col-md">
-            <h1>Silahkan Sampaikan Pengaduan Anda Langsung Kepada Kami</h1>
+            <h1>Please Submit Your Complaint Directly To Us</h1>
           </div>
           <div className="tampilanhome row justify-content-around bs m-5">
+            {/* // Nama mengikuti pengguna login register */}
             <div className="col">
-              <label className="labelform">Nama</label>
+              {/* <label className="labelform">Nama</label>
               <input
                 type="text"
                 className="form-control"
@@ -108,8 +106,8 @@ function CreateReporting() {
                 onChange={(e) => {
                   setcomplainants_name(e.target.value);
                 }}
-              />
-              <label className="labelform">Kategori</label>
+              /> */}
+              <label className="labelform">Category</label>
               <select
                 id="inputState"
                 className="form-control custom-select"
@@ -118,28 +116,28 @@ function CreateReporting() {
                   setcomplaint_category(e.target.value);
                 }}
               >
-                <option value="">Pilih Kategori</option>
+                <option value="">Select Category</option>
                 <option>Infrastruktur</option>
                 <option>Pelayan Publik</option>
                 <option>Keamanan dan Ketertiban</option>
                 <option>Kesehatan Masyarakat</option>
                 <option>Lingkungan</option>
               </select>
-              <label className="labelform">Judul Pengaduan</label>
+              <label className="labelform">Complaint Title</label>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Masukkan Judul Pengaduan"
+                placeholder="Enter Complaint Title"
                 value={complaint_title}
                 onChange={(e) => {
                   setcomplaint_title(e.target.value);
                 }}
               />
-              <label className="labelform">Isi Pengaduan</label>
+              <label className="labelform">Description</label>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Masukkan Isi Pengaduan"
+                placeholder="Enter Complaint Content"
                 value={description}
                 onChange={(e) => {
                   setdescription(e.target.value);
@@ -148,9 +146,9 @@ function CreateReporting() {
 
               <button
                 className="btn tambahkeluhan mt-2 btn-block"
-                onClick={addKeluhan}
+                onClick={addComplaint}
               >
-                Tambah Keluhan
+                Add Complaint
               </button>
             </div>
           </div>

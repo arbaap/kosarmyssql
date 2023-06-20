@@ -23,61 +23,80 @@ function AdminReport() {
   };
 
   const acceptedReporting = (id, newStatus) => {
-    axios
-      .put(`/u/rep?id=${id}`, { work_status: newStatus })
-      .then((response) => {
-        console.log(response.data);
-
-        const updatedList = reportings.map((report) => {
-          if (report.complaint_id === id) {
-            return { ...report, work_status: newStatus };
-          }
-          return report;
-        });
-        Swal.fire("Okay", "Reporting Accepted", "success").then(
-          (updatedList) => {
-            window.location.reload();
-          }
-        );
-        setReportings(updatedList);
-      })
-      .catch((error) => {
-        console.error(error);
-        Swal.fire("Oops", "Something Went Wrong", "error");
-      });
-  };
-
-  const rejectedReporting = (id, newStatus) => {
     Swal.fire({
-      title: "Reasons for Rejection",
-      input: "textarea",
-      inputPlaceholder: "Enter a Reason for Rejection",
+      title: "Are you sure?",
+      text: "You are accepting this reporting. Proceed?",
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "Reject",
+      confirmButtonText: "Accept",
       cancelButtonText: "Cancel",
-      showLoaderOnConfirm: true,
-      preConfirm: (reason) => {
-        return axios
-          .put(`/u/rep?id=${id}`, { work_status: newStatus, reason: reason })
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .put(`/u/rep?id=${id}`, { work_status: newStatus })
           .then((response) => {
             console.log(response.data);
+
             const updatedList = reportings.map((report) => {
               if (report.complaint_id === id) {
                 return { ...report, work_status: newStatus };
               }
               return report;
             });
-            Swal.fire("Okay", "Reporting Rejected", "success").then(
-              (updatedList) => {
-                window.location.reload();
-              }
-            );
+
+            Swal.fire("Accepted", "Reporting Accepted", "success").then(() => {
+              window.location.reload();
+            });
+
             setReportings(updatedList);
           })
           .catch((error) => {
             console.error(error);
             Swal.fire("Oops", "Something Went Wrong", "error");
           });
+      }
+    });
+  };
+
+  const rejectedReporting = (id, newStatus) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You are rejecting this reporting. Please provide a reason:",
+      input: "textarea",
+      icon: "warning",
+      inputPlaceholder: "Enter a Reason for Rejection",
+      showCancelButton: true,
+      confirmButtonText: "Reject",
+      cancelButtonText: "Cancel",
+      showLoaderOnConfirm: true,
+      reverseButtons: true,
+      preConfirm: (reason) => {
+        return new Promise((resolve) => {
+          axios
+            .put(`/u/rep?id=${id}`, { work_status: newStatus, reason: reason })
+            .then((response) => {
+              console.log(response.data);
+              const updatedList = reportings.map((report) => {
+                if (report.complaint_id === id) {
+                  return { ...report, work_status: newStatus };
+                }
+                return report;
+              });
+              Swal.fire("Rejected", "Reporting Rejected", "success").then(
+                () => {
+                  window.location.reload();
+                }
+              );
+              setReportings(updatedList);
+              resolve();
+            })
+            .catch((error) => {
+              console.error(error);
+              Swal.fire("Oops", "Something Went Wrong", "error");
+              resolve();
+            });
+        });
       },
     });
   };

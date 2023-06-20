@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Row, Col, Button, Table } from "react-bootstrap";
-import Swal from "sweetalert2";
+import { Row, Col, Table } from "react-bootstrap";
+
 
 function AdminAllUsers() {
   const [users, setUsers] = useState([]);

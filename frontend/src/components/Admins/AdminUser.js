@@ -1,14 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Row, Col, Button, Table, Modal } from "react-bootstrap";
-import { useRouteLoaderData } from "react-router-dom";
+import { Row, Col, Button, Table } from "react-bootstrap";
 import Swal from "sweetalert2";
 
 function AdminUser() {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(5);
-  const [selectedUsers, setSelectedUsers] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -24,49 +22,85 @@ function AdminUser() {
   };
 
   const verifiedUser = (id, newStatus) => {
-    axios
-      .put(`/u/user?id=${id}`, { account_state: newStatus })
-      .then((response) => {
-        console.log(response.data);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You are verifying this user. Proceed?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Verify",
+      cancelButtonText: "Cancel",
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .put(`/u/user?id=${id}`, { account_state: newStatus })
+          .then((response) => {
+            console.log(response.data);
 
-        const updatedList = users.map((report) => {
-          if (report.user_id === id) {
-            return { ...report, account_state: newStatus };
-          }
-          return report;
-        });
-        Swal.fire("Okay", "User Verified", "success").then((updatedList) => {
-          window.location.reload();
-        });
-        setUsers(updatedList);
-      })
-      .catch((error) => {
-        console.error(error);
-        Swal.fire("Oops", "Something Went Wrong", "error");
-      });
+            const updatedList = users.map((user) => {
+              if (user.user_id === id) {
+                return { ...user, account_state: newStatus };
+              }
+              return user;
+            });
+
+            Swal.fire(
+              "User Verified",
+              "User Verified Successfully",
+              "success"
+            ).then(() => {
+              window.location.reload();
+            });
+
+            setUsers(updatedList);
+          })
+          .catch((error) => {
+            console.error(error);
+            Swal.fire("Oops", "Something Went Wrong", "error");
+          });
+      }
+    });
   };
 
   const unverifiedUser = (id, newStatus) => {
-    axios
-      .put(`/u/user?id=${id}`, { account_state: newStatus })
-      .then((response) => {
-        console.log(response.data);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You are unverifying this user. Proceed?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Unverify",
+      cancelButtonText: "Cancel",
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .put(`/u/user?id=${id}`, { account_state: newStatus })
+          .then((response) => {
+            console.log(response.data);
 
-        const updatedList = users.map((report) => {
-          if (report.user_id === id) {
-            return { ...report, account_state: newStatus };
-          }
-          return report;
-        });
-        Swal.fire("Okay", "User Unverified", "success").then((updatedList) => {
-          window.location.reload();
-        });
-        setUsers(updatedList);
-      })
-      .catch((error) => {
-        console.error(error);
-        Swal.fire("Oops", "Something Went Wrong", "error");
-      });
+            const updatedList = users.map((user) => {
+              if (user.user_id === id) {
+                return { ...user, account_state: newStatus };
+              }
+              return user;
+            });
+
+            Swal.fire(
+              "User Unverified",
+              "User Unverified Successfully",
+              "success"
+            ).then(() => {
+              window.location.reload();
+            });
+
+            setUsers(updatedList);
+          })
+          .catch((error) => {
+            console.error(error);
+            Swal.fire("Oops", "Something Went Wrong", "error");
+          });
+      }
+    });
   };
 
   const handlePageChange = (pageNumber) => {

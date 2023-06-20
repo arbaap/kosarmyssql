@@ -32,29 +32,41 @@ function AdminReportings() {
     indexOfLastReporting
   );
 
-  const selesaireporting = (id, newStatus) => {
-    axios
-      .put(`/u/rep?id=${id}`, { work_status: newStatus })
-      .then((response) => {
-        console.log(response.data);
-        const updatedList = reportings.map((report) => {
-          if (report.complaint_id === id) {
-            return { ...report, work_status: newStatus };
-          }
-          return report;
-        });
+  const completedReporting = (id, newStatus) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You are marking this reporting as finished. Proceed?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Finish",
+      cancelButtonText: "Cancel",
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .put(`/u/rep?id=${id}`, { work_status: newStatus })
+          .then((response) => {
+            console.log(response.data);
 
-        Swal.fire("Okay", "Reporting Finished", "success").then(
-          (updatedList) => {
-            window.location.reload();
-          }
-        );
-        setReportings(updatedList);
-      })
-      .catch((error) => {
-        console.error(error);
-        Swal.fire("Oops", "Something Went Wrong", "error");
-      });
+            const updatedList = reportings.map((report) => {
+              if (report.complaint_id === id) {
+                return { ...report, work_status: newStatus };
+              }
+              return report;
+            });
+
+            Swal.fire("Finished", "Reporting Finished", "success").then(() => {
+              window.location.reload();
+            });
+
+            setReportings(updatedList);
+          })
+          .catch((error) => {
+            console.error(error);
+            Swal.fire("Oops", "Something Went Wrong", "error");
+          });
+      }
+    });
   };
 
   return (
@@ -108,7 +120,7 @@ function AdminReportings() {
                           variant="info"
                           className="btn-action"
                           onClick={() =>
-                            selesaireporting(
+                            completedReporting(
                               reporting.complaint_id,
                               "Completed"
                             )

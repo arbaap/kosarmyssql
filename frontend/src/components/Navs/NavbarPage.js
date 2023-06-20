@@ -6,8 +6,6 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../../assets/subang.png";
 import Swal from "sweetalert2";
 
-
-
 const NavbarPage = () => {
   const loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"));
 
@@ -24,7 +22,7 @@ const NavbarPage = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         sessionStorage.removeItem("loggedInUser");
-        Swal.fire("Okay", "Logout Berhasil", "success").then(() => {
+        Swal.fire("Okay", "Logout Success", "success").then(() => {
           window.location.href = "/login";
         });
       }

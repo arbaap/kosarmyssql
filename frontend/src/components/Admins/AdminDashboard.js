@@ -130,27 +130,27 @@ function AdminDashboard() {
   };
 
   return (
-    <div className="dashboard-container">
+    <Container className="dashboard-container">
       <h1>Dashboard</h1>
       <div className="incoming_report dashboard-box-incoming">
         <p>Incoming Reports</p>
-        <p className="angkas">{totalAmountReportings}</p>
+        <p className="numbers">{totalAmountReportings}</p>
       </div>
       <div className="reportings_accepted dashboard-box">
         <p>Processed</p>
-        <p className="angkas">{totalAmountReportingsAccepted}</p>
+        <p className="numbers">{totalAmountReportingsAccepted}</p>
       </div>
       <div className="reportings_completed dashboard-box">
         <p>Completed</p>
-        <p className="angkas">{totalAmountReportingsCompleted}</p>
+        <p className="numbers">{totalAmountReportingsCompleted}</p>
       </div>
       <div className="reportings_rejected dashboard-box">
         <p>Rejected</p>
-        <p className="angkas">{totalAmountReportingsRejected}</p>
+        <p className="numbers">{totalAmountReportingsRejected}</p>
       </div>
       <div className="reportings_pending dashboard-box">
         <p>Pending</p>
-        <p className="angkas">{totalAmountReportingsPending}</p>
+        <p className="numbers">{totalAmountReportingsPending}</p>
       </div>
       <div className="chart-container justify-content-center">
         <h1>Report Statistics</h1>
@@ -158,7 +158,7 @@ function AdminDashboard() {
           <Bar data={chartData} options={options} />
         </div>
       </div>
-    </div>
+    </Container>
   );
 }
 

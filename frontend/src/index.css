@@ -95,13 +95,13 @@ h1 {
   font-weight: bold;
 }
 
-.dashboard-box-incoming .angkas {
+.dashboard-box-incoming .numbers {
   font-size: 24px;
   margin-top: 5px;
 }
 
 .dashboard-box {
-  width: 200px;
+  width: 190px;
   height: 150px;
   display: inline-block;
   flex-direction: column;
@@ -121,7 +121,7 @@ h1 {
   font-weight: bold;
 }
 
-.dashboard-box .angkas {
+.dashboard-box .numbers {
   font-size: 24px;
   margin-top: 5px;
 }
