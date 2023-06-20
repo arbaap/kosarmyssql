@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Jun 2023 pada 20.36
+-- Waktu pembuatan: 20 Jun 2023 pada 19.05
 -- Versi server: 10.4.16-MariaDB
 -- Versi PHP: 7.4.12
 
@@ -80,7 +80,8 @@ INSERT INTO `reporting` (`updatedAt`, `createdAt`, `complaint_number`, `complain
 ('2023-06-20', '2023-06-19', 49, '1735a822-7013-4e2c-84ac-f', 'Arba', 'Pembangunan', '2023-06-19', 'Infrastruktur', 'Saya ingin mengajukan pengaduan terkait kondisi jalan desa yang rusak parah. Jalan ini merupakan akses utama bagi penduduk desa untuk beraktivitas sehari-hari, termasuk untuk mengirimkan hasil pertanian dan berangkat kerja. Namun, selama beberapa bulan terakhir, jalan ini semakin parah dan tidak layak untuk dilewati. Permukaannya berlubang-lubang besar, banyak batu yang terlepas, dan beberapa bagian jalan bahkan sudah retak. Kondisi jalan yang buruk ini mengganggu mobilitas kami dan juga membahayakan keselamatan pengguna jalan, terutama saat hujan karena jalan menjadi sangat licin. Saya berharap pemerintah desa dapat segera mengatasi masalah ini dengan memperbaiki jalan dan memastikan kualitasnya agar bisa digunakan dengan aman dan nyaman oleh warga desa. Terima kasih.', 'Accepted', '', 0, '3'),
 ('2023-06-20', '2023-06-19', 50, 'dc729666-3c8a-45dc-8b66-4', 'Apoey', 'Lampu Gelap', '2023-06-19', 'Keamanan dan Ketertiban', 'Saya ingin mengajukan pengaduan terkait kondisi jalan desa yang rusak parah. Jalan ini merupakan akses utama bagi penduduk desa untuk beraktivitas sehari-hari, termasuk untuk mengirimkan hasil pertanian dan berangkat kerja. Namun, selama beberapa bulan terakhir, jalan ini semakin parah dan tidak layak untuk dilewati. Permukaannya berlubang-lubang besar, banyak batu yang terlepas, dan beberapa bagian jalan bahkan sudah retak. Kondisi jalan yang buruk ini mengganggu mobilitas kami dan juga membahayakan keselamatan pengguna jalan, terutama saat hujan karena jalan menjadi sangat licin. Saya berharap pemerintah desa dapat segera mengatasi masalah ini dengan memperbaiki jalan dan memastikan kualitasnya agar bisa digunakan dengan aman dan nyaman oleh warga desa. Terima kasih.', 'Rejected', 'Palsu', 0, '4'),
 ('2023-06-19', '2023-06-19', 51, 'ac1cf6c0-d89a-40f4-a5fb-f', 'Arba', 'Jalan', '2023-06-19', 'Infrastruktur', 'Jalan Rusak', 'Completed', '', 2, '2'),
-('2023-06-20', '2023-06-20', 52, '4977acb2-6a8c-4918-a2f1-d', 'Poeyy', 'Pengaduan', '2023-06-20', 'Pelayan Publik', 'Saya ingin mengajukan pengaduan terkait kondisi jalan desa yang rusak parah. Jalan ini merupakan akses utama bagi penduduk desa untuk beraktivitas sehari-hari, termasuk untuk mengirimkan hasil pertanian dan berangkat kerja. Namun, selama beberapa bulan terakhir, jalan ini semakin parah dan tidak layak untuk dilewati. Permukaannya berlubang-lubang besar, banyak batu yang terlepas, dan beberapa bagian jalan bahkan sudah retak. Kondisi jalan yang buruk ini mengganggu mobilitas kami dan juga membahayakan keselamatan pengguna jalan, terutama saat hujan karena jalan menjadi sangat licin. Saya berharap pemerintah desa dapat segera mengatasi masalah ini dengan memperbaiki jalan dan memastikan kualitasnya agar bisa digunakan dengan aman dan nyaman oleh warga desa. Terima kasih.', 'Pending', '', 0, '4');
+('2023-06-20', '2023-06-20', 52, '4977acb2-6a8c-4918-a2f1-d', 'Poeyy', 'Pengaduan', '2023-06-20', 'Pelayan Publik', 'Saya ingin mengajukan pengaduan terkait kondisi jalan desa yang rusak parah. Jalan ini merupakan akses utama bagi penduduk desa untuk beraktivitas sehari-hari, termasuk untuk mengirimkan hasil pertanian dan berangkat kerja. Namun, selama beberapa bulan terakhir, jalan ini semakin parah dan tidak layak untuk dilewati. Permukaannya berlubang-lubang besar, banyak batu yang terlepas, dan beberapa bagian jalan bahkan sudah retak. Kondisi jalan yang buruk ini mengganggu mobilitas kami dan juga membahayakan keselamatan pengguna jalan, terutama saat hujan karena jalan menjadi sangat licin. Saya berharap pemerintah desa dapat segera mengatasi masalah ini dengan memperbaiki jalan dan memastikan kualitasnya agar bisa digunakan dengan aman dan nyaman oleh warga desa. Terima kasih.', 'Pending', '', 0, '4'),
+('2023-06-20', '2023-06-20', 53, 'db73786d-18ca-4693-b0dc-3', 'Arbaadhy', 'Banjir', '2023-06-20', 'Pelayan Publik', 'Saya berharap pemerintah desa dapat segera mengatasi masalah ini dengan memperbaiki jalan dan memastikan kualitasnya agar bisa digunakan dengan aman dan nyaman oleh warga desa. Terima kasih.', 'Pending', '', 0, '4');
 
 -- --------------------------------------------------------
 
@@ -93,18 +94,21 @@ CREATE TABLE `user` (
   `email` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `nik` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `account_state` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`user_id`, `email`, `name`, `nik`, `password`) VALUES
-(1, 'arba@gmail.com', 'arba', '3204070', 'arba123'),
-(2, 'arba', 'arba', '3204070', 'arba'),
-(3, 'arbas', 'arbas', '12345', 'arbas'),
-(4, 'apoey@gmail.com', 'apoey', '3010', 'apoey123');
+INSERT INTO `user` (`user_id`, `email`, `name`, `nik`, `password`, `account_state`) VALUES
+(1, 'arba@gmail.com', 'arba', '3204071', 'arba12', 'Verified'),
+(2, 'arba', 'arba', '3204070', 'arba', 'Unverified'),
+(3, 'arbas', 'arbas', '12345', 'arbas', 'Unverified'),
+(4, 'apoey@gmail.com', 'apoey', '3010', 'apoey123', 'Verified'),
+(5, 'arbaadhi@gmail.com', 'arbaadhi', '3204012', 'arba123', 'Verified'),
+(6, 'aps@gmail.com', 'aps', '0432', 'aps123', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -161,13 +165,13 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT untuk tabel `reporting`
 --
 ALTER TABLE `reporting`
-  MODIFY `complaint_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `complaint_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
