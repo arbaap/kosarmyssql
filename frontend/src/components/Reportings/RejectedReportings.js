@@ -25,9 +25,7 @@ function RejectedReportings() {
 
   function filterBySearch() {
     const tempreportings = duplicateReportings.filter((reporting) =>
-      reporting.complainants_name
-        .toLowerCase()
-        .includes(searchkey.toLowerCase())
+      reporting.complaint_title.toLowerCase().includes(searchkey.toLowerCase())
     );
 
     setReportings(tempreportings);
