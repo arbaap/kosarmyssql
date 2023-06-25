@@ -114,7 +114,7 @@ function DetailsReporting({ match }) {
             <h1 className="text-center">Detail</h1>
             <br></br>
             <p className="text-center">{reportings.description}</p>
-            {reportings.work_status === "Ditolak" && (
+            {reportings.work_status === "Rejected" && (
               <>
                 <Button
                   onClick={handleModal}
