@@ -7,10 +7,10 @@ const ProfileVillageScreen = () => {
     villageName: "Kosar Village",
     villageImage: logo,
     villageLocation:
-      "Pabuaran District, Subang Regency, West Java Province, Indonesia.",
+      "Cipendeuy District, Subang Regency, West Java Province, Indonesia.",
     villageDescription:
-      "Kosar Village is a village located in Pabuaran District, Subang Regency, West Java Province, Indonesia. Kosar Village has a rich history and unique culture. This village is known for its natural beauty and the friendliness of its people..",
-    villagePopulation: "1.529 million (2015)",
+      "Kosar Village is a village located in Cipendeuy District, Subang Regency, West Java Province, Indonesia. Kosar Village is one of 9 Villages in the Cipeundeuy District Area. Kosar Village has a rich history and unique culture. This village is famous for its natural beauty and the friendliness of its people..",
+    villagePopulation: "- 4500 Villagers",
     villageArea: "2.166 km²",
     villageLocationCoords:
       "Latitude. -6.4469° or 6° 26' 49' south ; Longitude. 107.6317° or 107° 37' 54",
@@ -36,7 +36,7 @@ const ProfileVillageScreen = () => {
     villageContact: {
       address: "Kosar, Kec. Cipeundeuy, Subang Regency, West Java 41262",
       phone: "-",
-      email: "blogmangyono@gmail.com",
+      email: "-",
       instagram: "-",
     },
   };

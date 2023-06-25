@@ -24,8 +24,14 @@ function AcceptedReportings() {
   }, []);
 
   function filterBySearch() {
-    const tempreportings = duplicateReportings.filter((reporting) =>
-      reporting.complaint_title.toLowerCase().includes(searchkey.toLowerCase())
+    const tempreportings = duplicateReportings.filter(
+      (reporting) =>
+        reporting.complaint_title
+          .toLowerCase()
+          .includes(searchkey.toLowerCase()) ||
+        reporting.complainants_name
+          .toLowerCase()
+          .includes(searchkey.toLowerCase())
     );
 
     setReportings(tempreportings);
