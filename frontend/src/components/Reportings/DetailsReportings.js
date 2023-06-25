@@ -66,7 +66,7 @@ function DetailsReporting({ match }) {
           </Link>
         </div>
         <div className="juduldetailpengaduan">
-          <h1>Detail Pengaduan</h1>
+          <h1>Details Reportings</h1>
         </div>
       </div>
 
@@ -77,11 +77,11 @@ function DetailsReporting({ match }) {
               <Container>
                 <Row className="text-center">
                   <Col style={{ borderRight: "1px solid black" }}>
-                    <strong>Pengirim</strong> <br></br>{" "}
+                    <strong>Complainants Name</strong> <br></br>{" "}
                     {reportings.complainants_name}
                   </Col>
                   <Col style={{ borderRight: "1px solid black" }}>
-                    <strong>Kategori</strong> <br></br>{" "}
+                    <strong>Category</strong> <br></br>{" "}
                     {reportings.complaint_category}
                   </Col>
                   <Col>
@@ -111,7 +111,7 @@ function DetailsReporting({ match }) {
       <Row className="tampilanhome row justify-content-around bs m-5">
         {reportings ? (
           <>
-            <h1 className="text-center">Detail</h1>
+            <h1 className="text-center">Details</h1>
             <br></br>
             <p className="text-center">{reportings.description}</p>
             {reportings.work_status === "Rejected" && (
@@ -125,17 +125,17 @@ function DetailsReporting({ match }) {
                     textOverflow: "ellipsis",
                   }}
                 >
-                  Lihat Alasan Penolakan
+                  See Reasons for Rejection
                 </Button>
 
                 <Modal show={showModal} onHide={handleModal}>
                   <Modal.Header closeButton>
-                    <Modal.Title>Alasan Penolakan</Modal.Title>
+                    <Modal.Title>Reasons for Rejection</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>{reportings.reason}</Modal.Body>
                   <Modal.Footer>
                     <Button variant="secondary" onClick={handleModal}>
-                      Tutup
+                      Close
                     </Button>
                   </Modal.Footer>
                 </Modal>
